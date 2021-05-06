@@ -23,8 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('api/professores', ProfessorController::class);
-Route::apiResource('api/usuarios', UsuarioController::class);
-Route::apiResource('api/matriculas', MatriculaController::class);
-Route::apiResource('api/linguagens', LinguagemProgramacaoController::class);
-Route::apiResource('api/cursos', CursoController::class);
+Route::apiResource('professores', ProfessorController::class);
+Route::apiResource('usuarios', UsuarioController::class);
+Route::apiResource('matriculas', MatriculaController::class);
+Route::apiResource('linguagens', LinguagemProgramacaoController::class);
+Route::apiResource('cursos', CursoController::class);
