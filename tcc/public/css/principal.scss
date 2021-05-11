@@ -1,0 +1,109 @@
+// ----------- VARIÁVEIS -----------
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+// ----------- VARIÁVEIS -----------
+//-- FONTES --
+$fonMono: "Oxygen Mono";
+$fonNormal: "Quicksand";
+
+//-- CORES --
+$preto: #010a12;
+$azul_escuro: #08111b;
+$cinza-claro: #dbdbdb;
+$verde_medio: #30828d;
+$cinza_medio: #33465a;
+$verde: #34f5c6;
+$azul: #1dcdfe;
+
+// ------------- MIXINS -------------
+@mixin centralizar {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+$cores: $verde, $azul;
+@mixin gradiente {
+  background: -webkit-linear-gradient(left, $cores);
+  background: -moz-linear-gradient(left, $cores);
+  background: -o-linear-gradient(left, $cores);
+  background: linear-gradient(left, $cores);
+}
+
+@mixin grad_font {
+  @include gradiente;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin transicao($tempo) {
+  -webkit-transition: $tempo;
+  -moz-transition: $tempo;
+  -o-transition: $tempo;
+  transition: $tempo;
+}
+
+// ----------- INÍCIO -----------
+* {
+  scroll-behavior: smooth;
+
+  &::selection {
+    color: white;
+    background-color: $verde_medio;
+  }
+}
+
+html,
+body {
+  background-color: $azul_escuro;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  font-family: $fonNormal;
+}
+
+h1,
+h2,
+h3 {
+  color: $cinza-claro;
+  font-family: $fonMono;
+  font-weight: bold;
+
+  &::after {
+    content: "";
+    height: 5px;
+    width: 19px;
+    margin-left: 5px;
+    display: inline-block;
+
+    @include gradiente;
+  }
+}
+
+h1 {
+  letter-spacing: -3px;
+  font-size: 2.7em;
+}
+
+#botao {
+  font-family: $fonMono;
+  border: solid $cinza-claro 1px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 15px 30px;
+  width: fit-content;
+
+  @include transicao(0.25s);
+
+  &:hover {
+    color: $azul_escuro;
+    border: none;
+
+    @include gradiente;
+  }
+}

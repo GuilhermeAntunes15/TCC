@@ -1,0 +1,39 @@
+// ----------- VARIÁVEIS -----------
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+// ----------- VARIÁVEIS -----------
+//-- FONTES --
+$fonMono: "Oxygen Mono";
+$fonNormal: "Quicksand";
+
+//-- CORES --
+$azul_escuro: #08111b;
+$cinza-claro: #dbdbdb;
+$verde_medio: #30828d;
+$cinza_medio: #33465a;
+$verde: #34f5c6;
+$azul: #1dcdfe;
+
+// ------------- MIXINS -------------
+@mixin centralizar {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+// ----------- INÍCIO -----------
+nav {
+  background-color: $cinza-claro;
+  width: 100vw;
+  display: block;
+  position: absolute;
+  height: 300px;
+
+  position: absolute;
+  a {
+    color: $cinza-claro;
+    text-decoration: none;
+  }
+}

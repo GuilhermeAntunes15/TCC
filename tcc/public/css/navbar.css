@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+nav {
+  background-color: #dbdbdb;
+  width: 100vw;
+  display: block;
+  position: absolute;
+  height: 300px;
+  position: absolute;
+}
+
+nav a {
+  color: #dbdbdb;
+  text-decoration: none;
+}
+/*# sourceMappingURL=navbar.css.map */

@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+* {
+  scroll-behavior: smooth;
+}
+
+*::-moz-selection {
+  color: white;
+  background-color: #30828d;
+}
+
+*::selection {
+  color: white;
+  background-color: #30828d;
+}
+
+html,
+body {
+  background-color: #08111b;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  font-family: "Quicksand";
+}
+
+h1,
+h2,
+h3 {
+  color: #dbdbdb;
+  font-family: "Oxygen Mono";
+  font-weight: bold;
+}
+
+h1::after,
+h2::after,
+h3::after {
+  content: "";
+  height: 5px;
+  width: 19px;
+  margin-left: 5px;
+  display: inline-block;
+  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
+  background: linear-gradient(left, #34f5c6, #1dcdfe);
+}
+
+h1 {
+  letter-spacing: -3px;
+  font-size: 2.7em;
+}
+
+#botao {
+  font-family: "Oxygen Mono";
+  border: solid #dbdbdb 1px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 15px 30px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+#botao:hover {
+  color: #08111b;
+  border: none;
+  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
+  background: linear-gradient(left, #34f5c6, #1dcdfe);
+}
+/*# sourceMappingURL=principal.css.map */

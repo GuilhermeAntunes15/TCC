@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TCC\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('login');
+})->name('login');
+
+Route::resource('usuarios', UsuarioController::class);
+Route::get('signup', [UsuarioController::class, 'create'])->name('signup.create');
+// Route::get('login', [UsuarioController::class, 'index'])->name('login.index');
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
