@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TCC\UsuarioController;
+use App\Http\Controllers\TCC\HomeController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,7 @@ Route::get('/', function () {
 })->name('login');
 
 Route::resource('usuarios', UsuarioController::class);
+Route::resource('home', HomeController::class);
 Route::get('signup', [UsuarioController::class, 'create'])->name('signup.create');
 // Route::get('login', [UsuarioController::class, 'index'])->name('login.index');
 

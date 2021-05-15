@@ -11,12 +11,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
-class UsuarioController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
         try {
-            return view('Login');
+            return view('pages.Home');
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
