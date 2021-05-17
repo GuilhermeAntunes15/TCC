@@ -9,7 +9,7 @@
     <title>Inscrever-se</title>
   </head>
   <body class="inscrever">
-    <div class="main">
+    <div class="main"> 
       <div id="titulo">
         <h1>Inscrever-se</h1>
       </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JwtAuthController;
 use App\Http\Controllers\TCC\CursoController;
 use App\Http\Controllers\TCC\LinguagemProgramacaoController;
 use App\Http\Controllers\TCC\MatriculaController;
@@ -19,12 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('login', [JwtAuthController::class, 'login']);
+Route::post('register', [UsuarioController::class, 'store']);
 
-Route::apiResource('professores', ProfessorController::class);
-Route::apiResource('usuarios', UsuarioController::class);
-Route::apiResource('matriculas', MatriculaController::class);
-Route::apiResource('linguagens', LinguagemProgramacaoController::class);
-Route::apiResource('cursos', CursoController::class);
+Route::group(['middleware' => ['apiJwt']], function () {
+    Route::apiResource('professores', ProfessorController::class);
+    Route::apiResource('usuarios', UsuarioController::class);
+    Route::apiResource('matriculas', MatriculaController::class);
+    Route::apiResource('linguagens', LinguagemProgramacaoController::class);
+    Route::apiResource('cursos', CursoController::class);
+});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

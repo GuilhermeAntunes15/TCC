@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TCC\Usuario;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -30,6 +31,8 @@ class UsuarioController extends Controller
         $fl_ativo = 'S';
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
+
+        $senha = Hash::make($senha);
 
         $pdo->bindValue(':1', $nome);
         $pdo->bindValue(':2', $login);
@@ -68,6 +71,8 @@ class UsuarioController extends Controller
         $dt_nasc = $request->dt_nasc;
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
+
+        $senha = Hash::make($senha);
 
         $pdo->bindValue(':1', $id);
         $pdo->bindValue(':2', $nome);
