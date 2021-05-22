@@ -1,24 +1,81 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+:root {
+  --corBackground: #010a12;
+  --corBackground2: #08111b;
+  --corFonte: white;
+  --verde_medio: #30828d;
+  --corComentario: #33465a;
+  --corEscuro: #010a12;
+  --corLink: #30828d;
+}
+
+.white-mode:root {
+  --corBackground: white;
+  --corBackground2: #98abc0;
+  --corFonte: #293f66;
+  --verde_medio: #67a7af;
+  --corComentario: #5781ad;
+  --corEscuro: #010a12;
+  --corLink: #30828d;
+}
+
+@-webkit-keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@-webkit-keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 * {
   scroll-behavior: smooth;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 *::-moz-selection {
   color: white;
-  background-color: #30828d;
+  background-color: var(--verde_medio);
 }
 
 *::selection {
   color: white;
-  background-color: #30828d;
+  background-color: var(--verde_medio);
 }
 
 html,
 body {
-  background-color: #08111b;
+  background-color: var(--corBackground);
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--corFonte);
 }
 
 body {
@@ -29,45 +86,254 @@ body {
 h1,
 h2,
 h3 {
-  color: #dbdbdb;
+  display: inline-block;
+  color: var(--corFonte);
   font-family: "Oxygen Mono";
-  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: efeito_maquina 7.5s steps(70) normal;
+          animation: efeito_maquina 7.5s steps(70) normal;
 }
 
 h1::after,
 h2::after,
 h3::after {
   content: "";
-  height: 5px;
-  width: 19px;
   margin-left: 5px;
   display: inline-block;
+  -webkit-animation: efeito_barra 1s normal;
+          animation: efeito_barra 1s normal;
   background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
   background: linear-gradient(left, #34f5c6, #1dcdfe);
+}
+
+@media (max-width: 599px) {
+  h1::after,
+  h2::after,
+  h3::after {
+    height: 3px;
+    width: 15px;
+  }
+}
+
+@media (min-width: 600px) {
+  h1::after,
+  h2::after,
+  h3::after {
+    height: 3.5px;
+    width: 19px;
+  }
 }
 
 h1 {
   letter-spacing: -3px;
-  font-size: 2.7em;
 }
 
-#botao {
+@media (max-width: 599px) {
+  h1 {
+    font-size: 2.2em;
+  }
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-size: 2.7em;
+  }
+}
+
+.botao {
   font-family: "Oxygen Mono";
-  border: solid #dbdbdb 1px;
-  border-radius: 8px;
+  border: 1px solid var(--corFonte);
+  border-radius: 50px;
   cursor: pointer;
-  padding: 15px 30px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  color: var(--corFonte);
   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
 
-#botao:hover {
-  color: #08111b;
-  border: none;
+.botao:hover {
+  color: var(--corEscuro);
+  border: 1px solid transparent;
   background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
   background: linear-gradient(left, #34f5c6, #1dcdfe);
+}
+
+nav {
+  color: var(--corFonte);
+  opacity: 95%;
+  height: 70px;
+  width: 100%;
+  color: var(--corFonte);
+  top: 0;
+  position: fixed;
+  margin-bottom: 75px;
+  background-color: var(--corBackground);
+  z-index: 1000;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+nav a {
+  text-decoration: none;
+  margin: 20px 40px;
+  padding: 7px auto 20px;
+  display: inline-block;
+  color: var(--corFonte);
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+nav a:visited {
+  color: var(--corFonte);
+}
+
+@media (max-width: 599px) {
+  nav a {
+    margin: 20px 20px;
+    padding: 7px auto 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav a {
+    margin: 20px 40px;
+    padding: 7px auto 20px;
+  }
+}
+
+nav #navbar {
+  float: right;
+}
+
+nav #navbar i {
+  width: 15px;
+  height: 15px;
+  margin: 20px 30px;
+  display: inline-block;
+  color: var(--corFonte);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+nav #navbar #open_nav {
+  display: none;
+}
+
+nav #navbar #nav-link:hover {
+  border-bottom: 2px solid var(--corFonte);
+}
+
+nav #navbar .botao {
+  padding: 7px 17.5px;
+}
+
+@media (max-width: 1000px) {
+  nav #navbar {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  nav #navbar {
+    margin: initial 0;
+    padding: initial 0;
+    margin-left: 0;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav #navbar {
+    margin-right: 50px;
+    font-size: initial;
+  }
+}
+
+nav #logo {
+  text-decoration: none;
+  margin: 18px 30px;
+  padding: 7px 17.5px;
+  display: inline-block;
+  font-family: "Oxygen Mono";
+}
+
+nav #logo p {
+  display: inline;
+}
+
+nav #logo img {
+  max-height: 30px;
+  max-width: 30px;
+  margin: 0 10px;
+  padding-top: 10px;
+}
+
+@media (max-width: 599px) {
+  nav #logo img {
+    max-height: 25px;
+    max-width: 25px;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav #logo img {
+    max-height: 30px;
+    max-width: 30px;
+  }
+}
+
+@media (max-width: 599px) {
+  nav #logo {
+    margin-left: 3px;
+    margin-right: 0px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 600px) {
+  nav #logo {
+    margin-left: 10px;
+    margin-right: 0px;
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav #logo {
+    margin-left: 50px;
+    font-size: 22px;
+  }
+}
+
+.comentario {
+  color: var(--corComentario);
+  background-color: transparent;
+  font-family: "Oxygen Mono";
+  font-style: italic;
+}
+
+footer {
+  height: 80px;
+}
+
+.main {
+  margin-top: 100px;
+}
+
+.white-mode nav i {
+  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
+  background: linear-gradient(left, #34f5c6, #1dcdfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 /*# sourceMappingURL=principal.css.map */

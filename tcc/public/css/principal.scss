@@ -3,18 +3,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
 // ----------- VARIÁVEIS -----------
-//-- FONTES --
+:root {
+  --corBackground: #010a12;
+  --corBackground2: #08111b;
+  --corFonte: white;
+  --verde_medio: #30828d;
+  --corComentario: #33465a;
+  --corEscuro: #010a12;
+  --corLink: #30828d;
+}
+
+//-- WHITE MODE --
+.white-mode:root {
+  --corBackground: white;
+  --corBackground2: #98abc0;
+  --corFonte: #293f66;
+  --verde_medio: #67a7af;
+  --corComentario: #5781ad;
+  --corEscuro: #010a12;
+  --corLink: #30828d;
+}
+
 $fonMono: "Oxygen Mono";
 $fonNormal: "Quicksand";
 
-//-- CORES --
-$preto: #010a12;
-$azul_escuro: #08111b;
-$cinza-claro: #dbdbdb;
-$verde_medio: #30828d;
-$cinza_medio: #33465a;
 $verde: #34f5c6;
 $azul: #1dcdfe;
+$azul2: #3e5988;
+$cores: $verde, $azul;
+
+// ------------- ANIMAÇÃO -------------
+@keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
 
 // ------------- MIXINS -------------
 @mixin centralizar {
@@ -24,7 +57,6 @@ $azul: #1dcdfe;
   }
 }
 
-$cores: $verde, $azul;
 @mixin gradiente {
   background: -webkit-linear-gradient(left, $cores);
   background: -moz-linear-gradient(left, $cores);
@@ -45,21 +77,63 @@ $cores: $verde, $azul;
   transition: $tempo;
 }
 
+@mixin sem_select {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin tamanho($range) {
+  $phone-upper-boundary: 600px;
+  $tablet-portrait-upper-boundary: 900px;
+  $tablet-landscape-upper-boundary: 1200px;
+  $desktop-upper-boundary: 1800px;
+
+  @if $range == celular {
+    @media (max-width: #{$phone-upper-boundary - 1}) {
+      @content;
+    }
+  } @else if $range == nav {
+    @media (max-width: 1000px) {
+      @content;
+    }
+  } @else if $range == tablet {
+    @media (min-width: $phone-upper-boundary) {
+      @content;
+    }
+  } @else if $range == desktop {
+    @media (min-width: $tablet-landscape-upper-boundary) {
+      @content;
+    }
+  } @else if $range == big-desktop {
+    @media (min-width: $desktop-upper-boundary) {
+      @content;
+    }
+  }
+}
+
 // ----------- INÍCIO -----------
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
+
+  @include transicao(0.2s);
 
   &::selection {
     color: white;
-    background-color: $verde_medio;
+    background-color: var(--verde_medio);
   }
 }
 
 html,
 body {
-  background-color: $azul_escuro;
+  background-color: var(--corBackground);
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--corFonte);
 }
 
 body {
@@ -67,43 +141,218 @@ body {
   font-family: $fonNormal;
 }
 
+//-- TÍTULOS --
 h1,
 h2,
 h3 {
-  color: $cinza-claro;
+  display: inline-block;
+  color: var(--corFonte);
   font-family: $fonMono;
-  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+
+  animation: efeito_maquina 7.5s steps(70) normal;
 
   &::after {
     content: "";
-    height: 5px;
-    width: 19px;
     margin-left: 5px;
     display: inline-block;
 
+    animation: efeito_barra 1s normal;
+
     @include gradiente;
+
+    @include tamanho(celular) {
+      height: 3px;
+      width: 15px;
+    }
+
+    @include tamanho(tablet) {
+      height: 3.5px;
+      width: 19px;
+    }
   }
 }
 
 h1 {
   letter-spacing: -3px;
-  font-size: 2.7em;
+
+  @include tamanho(celular) {
+    font-size: 2.2em;
+  }
+
+  @include tamanho(tablet) {
+    font-size: 2.7em;
+  }
 }
 
-#botao {
+//-- BOTÃO --
+.botao {
   font-family: $fonMono;
-  border: solid $cinza-claro 1px;
-  border-radius: 8px;
+  border: 1px solid var(--corFonte);
+  border-radius: 50px;
   cursor: pointer;
-  padding: 15px 30px;
   width: fit-content;
+  color: var(--corFonte);
 
   @include transicao(0.25s);
 
   &:hover {
-    color: $azul_escuro;
-    border: none;
+    color: var(--corEscuro);
+    border: 1px solid transparent;
 
     @include gradiente;
+  }
+}
+
+//-- NAVBAR --
+nav {
+  color: var(--corFonte);
+  opacity: 95%;
+  height: 70px;
+  width: 100%;
+  color: var(--corFonte);
+  top: 0;
+  position: fixed;
+  margin-bottom: 75px;
+  background-color: var(--corBackground);
+  z-index: 1000;
+
+  @include sem_select;
+
+  a {
+    text-decoration: none;
+    margin: 20px 40px;
+    padding: 7px auto 20px;
+    display: inline-block;
+    color: var(--corFonte);
+    @include sem_select;
+
+    &:visited {
+      color: var(--corFonte);
+    }
+
+    @include tamanho(celular) {
+      margin: 20px 20px;
+      padding: 7px auto 20px;
+    }
+
+    @include tamanho(desktop) {
+      margin: 20px 40px;
+      padding: 7px auto 20px;
+    }
+  }
+
+  #navbar {
+    float: right;
+
+    i {
+      width: 15px;
+      height: 15px;
+      margin: 20px 30px;
+      display: inline-block;
+      color: var(--corFonte);
+      cursor: pointer;
+
+      @include sem_select;
+    }
+
+    #open_nav {
+      display: none;
+    }
+
+    #nav-link:hover {
+      border-bottom: 2px solid var(--corFonte);
+    }
+
+    .botao {
+      padding: 7px 17.5px;
+    }
+
+    @include tamanho(nav) {
+      display: none;
+    }
+
+    @include tamanho(tablet) {
+      margin: initial 0;
+      padding: initial 0;
+      margin-left: 0;
+      font-size: 14px;
+    }
+
+    @include tamanho(desktop) {
+      margin-right: 50px;
+      font-size: initial;
+    }
+  }
+
+  #logo {
+    text-decoration: none;
+    margin: 18px 30px;
+    padding: 7px 17.5px;
+    display: inline-block;
+    font-family: $fonMono;
+
+    p {
+      display: inline;
+    }
+
+    img {
+      max-height: 30px;
+      max-width: 30px;
+      margin: 0 10px;
+      padding-top: 10px;
+
+      @include tamanho(celular) {
+        max-height: 25px;
+        max-width: 25px;
+      }
+
+      @include tamanho(desktop) {
+        max-height: 30px;
+        max-width: 30px;
+      }
+    }
+
+    @include tamanho(celular) {
+      margin-left: 3px;
+      margin-right: 0px;
+      font-size: 16px;
+    }
+
+    @include tamanho(tablet) {
+      margin-left: 10px;
+      margin-right: 0px;
+      font-size: 19px;
+    }
+
+    @include tamanho(desktop) {
+      margin-left: 50px;
+      font-size: 22px;
+    }
+  }
+}
+
+.comentario {
+  color: var(--corComentario);
+  background-color: transparent;
+  font-family: $fonMono;
+  font-style: italic;
+}
+
+//-- FOOTER --
+footer {
+  height: 80px;
+}
+
+.main {
+  margin-top: 100px;
+}
+
+.white-mode {
+  nav {
+    i {
+      @include grad_font;
+    }
   }
 }

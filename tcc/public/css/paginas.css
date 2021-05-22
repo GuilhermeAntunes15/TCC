@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+:root {
+  --corBackground: #010a12;
+  --corBackground2: #08111b;
+  --corFonte: white;
+  --verde_medio: #30828d;
+  --corComentario: #33465a;
+  --corEscuro: #010a12;
+}
+
+.white-mode:root {
+  --corBackground: white;
+  --corBackground2: #98abc0;
+  --corFonte: #34496e;
+  --verde_medio: #67a7af;
+  --corComentario: #354f6b;
+  --corEscuro: #010a12;
+}
+
+@-webkit-keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@-webkit-keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (max-width: 599px) {
+  main {
+    margin: 9em auto 0;
+    padding: 0 8vw;
+  }
+}
+
+@media (min-width: 600px) {
+  main {
+    margin: 10em auto 0;
+    padding: 0 10vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    padding: 0 15vw;
+  }
+}
+/*# sourceMappingURL=paginas.css.map */

@@ -1,65 +1,139 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-.login h1 {
-  margin-top: 25vh;
+:root {
+  --corBackground: #010a12;
+  --corBackground2: #08111b;
+  --corFonte: white;
+  --verde_medio: #30828d;
+  --corComentario: #33465a;
+  --corEscuro: #010a12;
+  --corLink: #30828d;
 }
 
-.inscrever h1 {
-  margin-top: 10vh;
+.white-mode:root {
+  --corBackground: white;
+  --corBackground2: #98abc0;
+  --corFonte: #293f66;
+  --verde_medio: #67a7af;
+  --corComentario: #5781ad;
+  --corEscuro: #010a12;
+  --corLink: #30828d;
+}
+
+@-webkit-keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .main {
   text-align: center;
 }
 
-.main form a,
-.main form input,
-.main form h1 {
+body {
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+form a,
+form input,
+form h1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.main form input {
-  color: white;
+form input {
+  color: var(--corFonte);
   font-family: "Quicksand";
   font-size: 1.1em;
   background-color: transparent;
   border: none;
-  border-bottom: solid 1.7px #33465a;
+  border-bottom: solid 1.7px var(--corComentario);
   padding-bottom: 10px;
-  margin: 60px auto 20px;
-  width: 35%;
+  margin: 50px auto 20px;
 }
 
-.main form input:focus {
+form input:focus {
   outline: none;
-  border-bottom-color: white;
+  border-bottom-color: var(--corFonte);
   -webkit-transition: 0.1s;
   transition: 0.1s;
 }
 
-.main form #aLogin,
-.main form #aInscrever {
-  color: #30828d;
+@media (max-width: 599px) {
+  form input {
+    width: 70%;
+    font-size: 0.9em;
+  }
+}
+
+@media (min-width: 600px) {
+  form input {
+    width: 55%;
+  }
+}
+
+@media (min-width: 1200px) {
+  form input {
+    width: 40%;
+  }
+}
+
+form #aLogin,
+form #aInscrever {
+  color: var(--corLink);
   font-family: "Oxygen Mono";
   font-size: 0.85em;
   text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
   display: inline-block;
+  -webkit-animation: efeito_maquina 10s steps(120) normal;
+          animation: efeito_maquina 10s steps(120) normal;
 }
 
-.main form #aLogin:hover,
-.main form #aInscrever:hover {
+form #aLogin:hover,
+form #aInscrever:hover {
   -webkit-transition: 0.1s;
   transition: 0.1s;
-  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
-  background: linear-gradient(left, #34f5c6, #1dcdfe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
 }
 
-.main form #botao {
+@media (max-width: 599px) {
+  form #aLogin,
+  form #aInscrever {
+    font-size: 0.75em;
+  }
+}
+
+form .botao {
   letter-spacing: 1.5px;
   font-size: 1.3em;
+  padding: 15px 30px;
+}
+
+form .botao:hover {
+  -webkit-transform: scale(105%);
+          transform: scale(105%);
+}
+
+@media (max-width: 599px) {
+  form .botao {
+    font-size: 1em;
+    padding: 10px 25px;
+  }
 }
 /*# sourceMappingURL=login.css.map */

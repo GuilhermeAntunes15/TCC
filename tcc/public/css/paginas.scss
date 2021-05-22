@@ -1,8 +1,8 @@
-// ------------- VARIÁVEIS -------------
+// ----------- VARIÁVEIS -----------
 @import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
-// ------------- VARIÁVEIS -------------
+// ----------- VARIÁVEIS -----------
 :root {
   --corBackground: #010a12;
   --corBackground2: #08111b;
@@ -10,18 +10,16 @@
   --verde_medio: #30828d;
   --corComentario: #33465a;
   --corEscuro: #010a12;
-  --corLink: #30828d;
 }
 
 //-- WHITE MODE --
 .white-mode:root {
   --corBackground: white;
   --corBackground2: #98abc0;
-  --corFonte: #293f66;
+  --corFonte: #34496e;
   --verde_medio: #67a7af;
-  --corComentario: #5781ad;
+  --corComentario: #354f6b;
   --corEscuro: #010a12;
-  --corLink: #30828d;
 }
 
 $fonMono: "Oxygen Mono";
@@ -33,6 +31,12 @@ $azul2: #3e5988;
 $cores: $verde, $azul;
 
 // ------------- ANIMAÇÃO -------------
+@keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
 @keyframes efeito_maquina {
   from {
     width: 0;
@@ -51,7 +55,6 @@ $cores: $verde, $azul;
   }
 }
 
-$cores: $verde, $azul;
 @mixin gradiente {
   background: -webkit-linear-gradient(left, $cores);
   background: -moz-linear-gradient(left, $cores);
@@ -72,6 +75,13 @@ $cores: $verde, $azul;
   transition: $tempo;
 }
 
+@mixin sem_select {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 @mixin tamanho($range) {
   $phone-upper-boundary: 600px;
   $tablet-portrait-upper-boundary: 900px;
@@ -90,98 +100,26 @@ $cores: $verde, $azul;
     @media (min-width: $tablet-landscape-upper-boundary) {
       @content;
     }
-  } @else if $range == desktop-grande {
+  } @else if $range == big-desktop {
     @media (min-width: $desktop-upper-boundary) {
       @content;
     }
   }
 }
 
-// ------------- INÍCIO -------------
-.main {
-  text-align: center;
-}
-
-body {
-  max-height: 100vh;
-  overflow-y: scroll;
-}
-
-form {
-  a,
-  input,
-  h1 {
-    display: block;
-
-    @include centralizar;
+// ----------- INÍCIO -----------
+main {
+  @include tamanho(celular) {
+    margin: 9em auto 0;
+    padding: 0 8vw;
   }
 
-  input {
-    color: var(--corFonte);
-    font-family: $fonNormal;
-    font-size: 1.1em;
-    background-color: transparent;
-    border: none;
-    border-bottom: solid 1.7px var(--corComentario);
-    padding-bottom: 10px;
-    margin: 50px auto 20px;
-
-    &:focus {
-      outline: none;
-      border-bottom-color: var(--corFonte);
-
-      @include transicao(0.1s);
-    }
-
-    @include tamanho(celular) {
-      width: 70%;
-      font-size: 0.9em;
-    }
-
-    @include tamanho(tablet) {
-      width: 55%;
-    }
-
-    @include tamanho(desktop) {
-      width: 40%;
-    }
+  @include tamanho(tablet) {
+    margin: 10em auto 0;
+    padding: 0 10vw;
   }
 
-  #aLogin,
-  #aInscrever {
-    color: var(--corLink);
-    font-family: $fonMono;
-    font-size: 0.85em;
-    text-decoration: none;
-    overflow: hidden;
-    white-space: nowrap;
-
-    display: inline-block;
-
-    animation: efeito_maquina 10s steps(120) normal;
-
-    &:hover {
-      transition: 0.1s;
-      text-decoration: underline;
-    }
-
-    @include tamanho(celular) {
-      font-size: 0.75em;
-    }
-  }
-
-  .botao {
-    letter-spacing: 1.5px;
-    font-size: 1.3em;
-    padding: 15px 30px;
-
-    &:hover {
-      transform: scale(105%);
-    }
-
-    @include tamanho(celular) {
-      font-size: 1em;
-      padding: 10px 25px;
-    }
+  @include tamanho(desktop) {
+    padding: 0 15vw;
   }
 }
