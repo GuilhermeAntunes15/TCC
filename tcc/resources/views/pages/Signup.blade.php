@@ -11,6 +11,7 @@
       href="{{ asset('img/icone_charlie.png') }}"
       type="image/x-icon"
     />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="{{ asset('js/principal.js') }}"></script>
     <script
       src="https://kit.fontawesome.com/04cbf46b06.js"
@@ -19,7 +20,7 @@
     <title>Inscrever-se - TCC</title>
   </head>
   <body>
-    <nav>
+    <nav id="navbar" class="navbar">
       <a href="index.html" id="logo">
         <img src="{{ asset('img/icone_charlie1-2.png') }}" title="logo" />Charlie
         <img src="{{ asset('img/icone_charlie2-2.png') }}" title="logo"/>
@@ -34,7 +35,7 @@
       </section>
     </nav>
 
-    <div class="main">
+    <main>
       <div id="titulo">
         <h1>Inscrever-se</h1>
       </div>
@@ -72,7 +73,7 @@
         <a href="login.html" id="aLogin">Já sou inscrito</a>
         <input type="submit" value="Continuar" class="botao" />
       </form>
-    </div>
+    </main>
   </body>
 </html>
 

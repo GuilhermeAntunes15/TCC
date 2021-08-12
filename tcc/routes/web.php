@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TCC\CursoController;
 use App\Http\Controllers\TCC\UsuarioController;
 use App\Http\Controllers\TCC\HomeController;
 
@@ -22,6 +23,7 @@ Route::get('/', function () {
 
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('home', HomeController::class);
+Route::resource('curso', CursoController::class);
 Route::get('signup', [UsuarioController::class, 'create'])->name('signup.create');
 // Route::get('login', [UsuarioController::class, 'index'])->name('login.index');
 

@@ -1,39 +1,146 @@
-// ----------- VARIÁVEIS -----------
-@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import "variaveis";
 
-// ----------- VARIÁVEIS -----------
-//-- FONTES --
-$fonMono: "Oxygen Mono";
-$fonNormal: "Quicksand";
+// ----------- INÍCIO -----------
 
-//-- CORES --
-$azul_escuro: #08111b;
-$cinza-claro: #dbdbdb;
-$verde_medio: #30828d;
-$cinza_medio: #33465a;
-$verde: #34f5c6;
-$azul: #1dcdfe;
+@include tamanho(resp) {
+  nav {
+    opacity: 100%;
+    background-color: transparent;
 
-// ------------- MIXINS -------------
-@mixin centralizar {
-  margin: {
-    left: auto;
-    right: auto;
+    @include tamanho(celular) {
+      background-color: var(--corBackground);
+    }
+  }
+
+  #nav-link {
+    display: none;
+  }
+
+  .botao {
+    display: none;
+  }
+
+  .icon {
+    position: static;
+    margin: 17px 30px 0;
+    float: right;
+  }
+
+  nav i {
+    width: 15px;
+    height: 15px;
+    color: var(--corFonte);
+    cursor: pointer;
+  }
+
+  #change_mode {
+    position: absolute;
+
+    @include tamanho(tablet) {
+      right: 60px;
+    }
+  }
+
+  //---------------------------------
+
+  .responsivo {
+    height: 100vh;
+    width: 450px;
+    background-color: var(--corBackground);
+    float: right;
+
+    @include tamanho(celular) {
+      margin: 10vh auto;
+      font-size: 4vw;
+      text-align: center;
+    }
+
+    #nav-link {
+      float: none;
+      display: block;
+      margin-top: 10vh;
+
+      @include tamanho(celular) {
+        margin: 10vh auto;
+        font-size: 4vw;
+        text-align: center;
+      }
+
+      @include tamanho(tablet) {
+        margin: 6vh 0 6vh 40px;
+        font-size: 2.6vw;
+        text-align: left;
+      }
+    }
+
+    .icon {
+      display: inline-block;
+    }
+
+    #change_mode {
+      display: none;
+    }
+
+    .botao {
+      float: none;
+      display: block;
+
+      @include tamanho(celular) {
+        text-align: center;
+        margin: 30vh auto;
+        font-size: 4vw;
+        color: var(--corEscuro);
+        border: var(--corEscuro);
+
+        @include gradiente;
+
+        &:hover {
+          transform: scale(105%);
+        }
+      }
+
+      @include tamanho(tablet) {
+        font-size: 2.6vw;
+        margin: 6vh 0 6vh 40px;
+
+        &:hover {
+          transform: scale(105%);
+        }
+      }
+    }
+
+    @include tamanho(celular) {
+      width: 100%;
+
+      & i {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      #change_mode {
+        right: 10vw;
+        top: 100px;
+      }
+    }
+  }
+
+  @include tamanho(celular) {
+    .navbar i {
+      display: block;
+      position: absolute;
+      right: 0;
+    }
+
+    #change_mode {
+      top: 50px;
+    }
   }
 }
 
-// ----------- INÍCIO -----------
-nav {
-  background-color: $cinza-claro;
-  width: 100vw;
-  display: block;
-  position: absolute;
-  height: 300px;
-
-  position: absolute;
-  a {
-    color: $cinza-claro;
-    text-decoration: none;
+@include tamanho(resp-up) {
+  .icon {
+    display: none;
   }
 }

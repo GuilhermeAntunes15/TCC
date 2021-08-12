@@ -1,134 +1,21 @@
-// ----------- VARIÁVEIS -----------
-@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-
-// ----------- VARIÁVEIS -----------
-:root {
-  --corBackground: #010a12;
-  --corBackground2: #08111b;
-  --corFonte: white;
-  --verde_medio: #30828d;
-  --corComentario: #33465a;
-  --corEscuro: #010a12;
-  --corLink: #30828d;
-}
-
-//-- WHITE MODE --
-.white-mode:root {
-  --corBackground: white;
-  --corBackground2: #98abc0;
-  --corFonte: #293f66;
-  --verde_medio: #67a7af;
-  --corComentario: #5781ad;
-  --corEscuro: #010a12;
-  --corLink: #30828d;
-}
-
-$fonMono: "Oxygen Mono";
-$fonNormal: "Quicksand";
-
-$verde: #34f5c6;
-$azul: #1dcdfe;
-$azul2: #3e5988;
-$cores: $verde, $azul;
-
-// ------------- ANIMAÇÃO -------------
-@keyframes efeito_barra {
-  to {
-    background: transparent;
-  }
-}
-
-@keyframes efeito_maquina {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 100%;
-  }
-}
-
-// ------------- MIXINS -------------
-@mixin centralizar {
-  margin: {
-    left: auto;
-    right: auto;
-  }
-}
-
-@mixin gradiente {
-  background: -webkit-linear-gradient(left, $cores);
-  background: -moz-linear-gradient(left, $cores);
-  background: -o-linear-gradient(left, $cores);
-  background: linear-gradient(left, $cores);
-}
-
-@mixin grad_font {
-  @include gradiente;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@mixin transicao($tempo) {
-  -webkit-transition: $tempo;
-  -moz-transition: $tempo;
-  -o-transition: $tempo;
-  transition: $tempo;
-}
-
-@mixin sem_select {
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-@mixin tamanho($range) {
-  $phone-upper-boundary: 600px;
-  $tablet-portrait-upper-boundary: 900px;
-  $tablet-landscape-upper-boundary: 1200px;
-  $desktop-upper-boundary: 1800px;
-
-  @if $range == celular {
-    @media (max-width: #{$phone-upper-boundary - 1}) {
-      @content;
-    }
-  } @else if $range == nav {
-    @media (max-width: 1000px) {
-      @content;
-    }
-  } @else if $range == tablet {
-    @media (min-width: $phone-upper-boundary) {
-      @content;
-    }
-  } @else if $range == desktop {
-    @media (min-width: $tablet-landscape-upper-boundary) {
-      @content;
-    }
-  } @else if $range == big-desktop {
-    @media (min-width: $desktop-upper-boundary) {
-      @content;
-    }
-  }
-}
+@import "variaveis";
 
 // ----------- INÍCIO -----------
 * {
   scroll-behavior: smooth;
   box-sizing: border-box;
 
-  @include transicao(0.2s);
-
   &::selection {
-    color: white;
     background-color: var(--verde_medio);
   }
 }
 
+html {
+  overflow-x: hidden;
+}
+
 html,
 body {
-  background-color: var(--corBackground);
   margin: 0;
   padding: 0;
   width: 100%;
@@ -137,8 +24,12 @@ body {
 }
 
 body {
-  width: 100%;
   font-family: $fonNormal;
+  background: var(--corBackground);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  @include transicao(0.2s);
 }
 
 //-- TÍTULOS --
@@ -151,6 +42,7 @@ h3 {
   white-space: nowrap;
   overflow: hidden;
 
+  @include transicao(0.2s);
   animation: efeito_maquina 7.5s steps(70) normal;
 
   &::after {
@@ -186,6 +78,22 @@ h1 {
   }
 }
 
+h2 {
+  @include tamanho(celular) {
+    font-size: 2.2em;
+    margin-bottom: 2em;
+  }
+
+  @include tamanho(tablet) {
+    font-size: 2.7em;
+    margin-bottom: 2em;
+  }
+
+  @include tamanho(tablet) {
+    margin-bottom: 3em;
+  }
+}
+
 //-- BOTÃO --
 .botao {
   font-family: $fonMono;
@@ -193,8 +101,10 @@ h1 {
   border-radius: 50px;
   cursor: pointer;
   width: fit-content;
+  text-decoration: none;
   color: var(--corFonte);
 
+  @include transicao(0.2s);
   @include transicao(0.25s);
 
   &:hover {
@@ -209,23 +119,20 @@ h1 {
 nav {
   color: var(--corFonte);
   opacity: 95%;
-  height: 70px;
   width: 100%;
-  color: var(--corFonte);
   top: 0;
   position: fixed;
   margin-bottom: 75px;
-  background-color: var(--corBackground);
   z-index: 1000;
+  padding: auto 20px;
+  background: var(--corBackground);
 
   @include sem_select;
 
   a {
     text-decoration: none;
-    margin: 20px 40px;
-    padding: 7px auto 20px;
-    display: inline-block;
     color: var(--corFonte);
+
     @include sem_select;
 
     &:visited {
@@ -234,17 +141,22 @@ nav {
 
     @include tamanho(celular) {
       margin: 20px 20px;
-      padding: 7px auto 20px;
+    }
+
+    @include tamanho(tablet) {
+      margin: 20px 20px;
     }
 
     @include tamanho(desktop) {
       margin: 20px 40px;
-      padding: 7px auto 20px;
     }
   }
 
   #navbar {
     float: right;
+    z-index: 2000;
+    background-color: var(--corBackground);
+    text-align: center;
 
     i {
       width: 15px;
@@ -254,44 +166,43 @@ nav {
       color: var(--corFonte);
       cursor: pointer;
 
+      @include transicao(0.2s);
       @include sem_select;
     }
 
-    #open_nav {
-      display: none;
-    }
-
-    #nav-link:hover {
-      border-bottom: 2px solid var(--corFonte);
+    #nav-link {
+      @include transicao(0.2s);
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     .botao {
       padding: 7px 17.5px;
+      @include transicao(0.2s);
     }
 
-    @include tamanho(nav) {
-      display: none;
+    @include tamanho(celular) {
+      font-size: 14px;
     }
 
     @include tamanho(tablet) {
-      margin: initial 0;
-      padding: initial 0;
-      margin-left: 0;
       font-size: 14px;
     }
 
     @include tamanho(desktop) {
-      margin-right: 50px;
       font-size: initial;
     }
   }
 
   #logo {
     text-decoration: none;
-    margin: 18px 30px;
+    margin: 0 30px;
     padding: 7px 17.5px;
     display: inline-block;
     font-family: $fonMono;
+
+    @include transicao(0.2s);
 
     p {
       display: inline;
@@ -300,24 +211,17 @@ nav {
     img {
       max-height: 30px;
       max-width: 30px;
-      margin: 0 10px;
       padding-top: 10px;
+    }
 
-      @include tamanho(celular) {
-        max-height: 25px;
-        max-width: 25px;
-      }
-
-      @include tamanho(desktop) {
-        max-height: 30px;
-        max-width: 30px;
-      }
+    #img1 {
+      padding-left: 10px;
     }
 
     @include tamanho(celular) {
-      margin-left: 3px;
+      margin-left: 10px;
       margin-right: 0px;
-      font-size: 16px;
+      font-size: 19px;
     }
 
     @include tamanho(tablet) {
@@ -327,32 +231,209 @@ nav {
     }
 
     @include tamanho(desktop) {
-      margin-left: 50px;
       font-size: 22px;
     }
   }
 }
 
+.figuras {
+  @include sem_select;
+
+  #fig0 {
+    color: var(--verde_medio);
+    font-size: 30px;
+    left: 30%;
+    top: 8vh;
+    position: fixed;
+    z-index: -10;
+    animation: efeito_mostra 2.5s forwards ease-in-out;
+  }
+
+  #fig1 {
+    color: $verde;
+    font-size: 38px;
+    right: 22%;
+    top: 10vh;
+    position: absolute;
+    letter-spacing: 15px;
+    z-index: 10;
+    animation: efeito_mostra 1s forwards ease-in-out;
+  }
+
+  #fig2 {
+    color: var(--corBackground2);
+    opacity: 0.6;
+    font-size: 25px;
+    right: 20%;
+    top: 42vh;
+    position: fixed;
+    z-index: -11;
+    animation: efeito_mostra 2s forwards ease-in-out;
+  }
+
+  #fig3 {
+    color: $verde;
+    font-size: 40px;
+    left: 20%;
+    top: 50vh;
+    position: absolute;
+    letter-spacing: 10px;
+    z-index: 11;
+    animation: efeito_mostra 1s forwards ease-in-out;
+  }
+
+  #fig4 {
+    color: $azul;
+    font-family: $fonMono;
+    font-size: 25px;
+    position: absolute;
+    right: 24%;
+    top: 73vh;
+    z-index: 12;
+    letter-spacing: 12px;
+    animation: efeito_mostra 1s forwards ease-in-out;
+  }
+
+  #fig5 {
+    color: var(--verde_medio);
+    font-size: 30px;
+    position: fixed;
+    left: 24%;
+    top: 85vh;
+    z-index: -12;
+    letter-spacing: 12px;
+    animation: efeito_mostra 2.5s forwards ease-in-out;
+  }
+
+  #fig6 {
+    color: var(--corBackground2);
+    opacity: 0.6;
+    font-family: $fonMono;
+    font-size: 20px;
+    position: fixed;
+    left: 18%;
+    top: 44vh;
+    z-index: -13;
+    animation: efeito_mostra 2s forwards ease-in-out;
+  }
+
+  #fig7 {
+    color: $azul;
+    font-family: $fonMono;
+    font-size: 20px;
+    position: absolute;
+    left: 26%;
+    top: 154vh;
+    z-index: 12;
+    animation: efeito_mostra 1s forwards ease-in-out;
+  }
+
+  #fig8 {
+    color: $verde;
+    font-size: 40px;
+    right: 25%;
+    top: 160vh;
+    position: absolute;
+    letter-spacing: 10px;
+    z-index: 11;
+    animation: efeito_mostra 1s forwards ease-in-out;
+  }
+}
+
+main {
+  text-align: center;
+  overflow-x: hidden;
+  //overflow-y: hidden;
+
+  @include transicao(0.2s);
+
+  @media screen and(max-width: 500px) {
+    margin: 9em 1vw;
+  }
+
+  @include tamanho(celular) {
+    margin: 9em 8vw;
+  }
+
+  @include tamanho(tablet) {
+    margin: 10em 6vw;
+  }
+
+  @include tamanho(desktop) {
+    margin: 10em 15vw;
+  }
+
+  h1 {
+    margin-top: 12vh;
+  }
+}
+
+mark,
 .comentario {
   color: var(--corComentario);
   background-color: transparent;
   font-family: $fonMono;
-  font-style: italic;
+
+  @include transicao(0.2s);
 }
 
-//-- FOOTER --
 footer {
-  height: 80px;
+  background-color: var(--corBackground);
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  z-index: -14;
+
+  @include transicao(0.2s);
+
+  p {
+    margin: 50px auto 30px;
+    font-size: 14px;
+    color: var(--corLink);
+    letter-spacing: 2px;
+  }
 }
 
-.main {
-  margin-top: 100px;
+.notificacao {
+  position: fixed;
+  background-color: var(--corNotif);
+  border: 1px solid var(--corComentario);
+  border-radius: 0 20px 0 20px;
+  z-index: 2000;
+
+  span {
+    right: 0;
+    display: block;
+    position: absolute;
+  }
 }
 
-.white-mode {
-  nav {
-    i {
-      @include grad_font;
-    }
+#notificacao_cookies {
+  right: 0;
+  position: absolute;
+  padding: 30px 40px;
+  bottom: 0;
+  margin: 50px;
+  position: fixed;
+  display: block;
+  animation: efeito_mostra_notif 0.7s forwards ease-in-out;
+
+  span {
+    cursor: pointer;
+    top: 5px;
+    right: 30px;
+    font-size: 30px;
+
+    @include sem_select;
+  }
+
+  h3 {
+    animation: none;
+    margin-bottom: -2px;
+  }
+
+  p {
+    padding-left: 10px;
   }
 }

@@ -19,7 +19,7 @@
     <title>Login - TCC</title>
   </head>
   <body>
-    <nav>
+    <nav id="navbar" class="navbar">
       <a href="index.html" id="logo"
         ><img src="{{ asset('img/icone_charlie1-2.png') }}" title="logo" />Charlie
         <img src="{{ asset('img/icone_charlie2-2.png') }}" title="logo"/>
@@ -33,7 +33,7 @@
         ></i>
     </nav>
 
-    <div class="main">
+    <main>
       <div id="titulo">
         <h1>Login</h1>
       </div>
@@ -49,6 +49,12 @@
         <a href="{{route('signup.create')}}" id="aInscrever">Ainda não sou inscrito</a>
         <input type="submit" value="Continuar" class="botao" />
       </form>
-    </div>
+    </main>
   </body>
+<script
+  src="https://kit.fontawesome.com/04cbf46b06.js"
+  crossorigin="anonymous"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script src="{{ asset('js/principal.js') }}"></script>
 </html>

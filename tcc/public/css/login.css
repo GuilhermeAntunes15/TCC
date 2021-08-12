@@ -1,23 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-:root {
-  --corBackground: #010a12;
-  --corBackground2: #08111b;
+.black-mode:root {
+  --corBackground: #08111b /*#141442*/;
+  --corBackground2: #020b1399;
+  --corBackground3: #01050899;
+  --corTransp: #04123580;
   --corFonte: white;
-  --verde_medio: #30828d;
-  --corComentario: #33465a;
+  --verde_medio: #30828dde;
+  --corComentario: #3d5c7e;
   --corEscuro: #010a12;
-  --corLink: #30828d;
+  --corLink: #069aad;
+  --corNotif: #04081199;
+}
+
+.mid-mode:root {
+  --corBackground: #4073e0;
+  --corBackground2: #1a64c599;
+  --corBackground3: #04489699;
+  --corTransp: #06428680;
+  --corFonte: white;
+  --verde_medio: #3989bede;
+  --corComentario: #6aa3e4;
+  --corEscuro: #010712;
+  --corLink: #71cef3;
+  --corNotif: #2073c099;
 }
 
 .white-mode:root {
   --corBackground: white;
-  --corBackground2: #98abc0;
-  --corFonte: #293f66;
-  --verde_medio: #67a7af;
-  --corComentario: #5781ad;
+  --corBackground2: #c8e6ee90;
+  --corBackground3: #8eb9c490;
+  --corTransp: #8fe5fd99;
+  --corFonte: #142d57;
+  --verde_medio: #88d6dfd8;
+  --corComentario: #7bbed3;
   --corEscuro: #010a12;
-  --corLink: #30828d;
+  --corLink: #026891;
+  --corNotif: #e6ffff99;
+}
+
+@-webkit-keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
 }
 
 @-webkit-keyframes efeito_maquina {
@@ -38,13 +69,67 @@
   }
 }
 
-.main {
-  text-align: center;
+@-webkit-keyframes efeito_mostra {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(70px);
+            transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
 }
 
-body {
-  max-height: 100vh;
-  overflow-y: scroll;
+@keyframes efeito_mostra {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(70px);
+            transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes efeito_mostra_notif {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(120px);
+            transform: translatex(120px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes efeito_mostra_notif {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(120px);
+            transform: translatex(120px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+* {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+main {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 35px;
 }
 
 form a,
@@ -61,7 +146,7 @@ form input {
   font-size: 1.1em;
   background-color: transparent;
   border: none;
-  border-bottom: solid 1.7px var(--corComentario);
+  border-bottom: solid 1.7px #9fadbe99;
   padding-bottom: 10px;
   margin: 50px auto 20px;
 }
@@ -107,9 +192,10 @@ form #aInscrever {
 
 form #aLogin:hover,
 form #aInscrever:hover {
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-  text-decoration: underline;
+  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
+  background: linear-gradient(to right, #34f5c6, #1dcdfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media (max-width: 599px) {
@@ -117,6 +203,11 @@ form #aInscrever:hover {
   form #aInscrever {
     font-size: 0.75em;
   }
+}
+
+form h1 {
+  -webkit-animation: efeito_maquina 7.5s steps(70) normal;
+          animation: efeito_maquina 7.5s steps(70) normal;
 }
 
 form .botao {
@@ -135,5 +226,9 @@ form .botao:hover {
     font-size: 1em;
     padding: 10px 25px;
   }
+}
+
+nav img {
+  margin: 0 10px;
 }
 /*# sourceMappingURL=login.css.map */

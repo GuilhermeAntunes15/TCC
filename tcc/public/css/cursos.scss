@@ -1,0 +1,188 @@
+@import "variaveis";
+
+main {
+  margin-top: 90px;
+}
+
+#diretorios {
+  display: block;
+  text-align: left;
+  font-size: 23px;
+  top: 110px;
+  position: relative;
+  margin-left: 10vw;
+
+  p {
+    font-family: $fonMono;
+    display: inline;
+  }
+
+  #dir_atual {
+    border-bottom: 2px solid var(--corComentario);
+  }
+}
+
+#curso {
+  margin-top: 40px;
+  text-align: left;
+  display: block;
+
+  #titulo_curso {
+    margin: 20px auto 35px;
+    display: block;
+    font-size: 35px;
+
+    i {
+      @include grad_font;
+    }
+
+    &::after {
+      width: 0;
+    }
+
+    &,
+    &::after {
+      animation: none;
+    }
+  }
+
+  #dados_curso {
+    height: fit-content;
+    display: grid;
+    grid-gap: 1vw;
+    grid-template-columns: 1.2fr 0.8fr;
+    justify-content: center;
+
+    #img_curso {
+      img {
+        width: 95%;
+        height: auto;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  #descricao {
+    font-size: 17px;
+
+    #desc_lista {
+      margin: 7vh auto;
+      display: block;
+
+      #desc_lista_item {
+        display: block;
+        margin-left: 25px;
+
+        p {
+          display: inline;
+        }
+
+        i {
+          margin-right: 10px;
+          display: inline;
+
+          @include grad-font;
+        }
+      }
+    }
+
+    #desc_botao {
+      padding: 10px 30px;
+      margin-top: 20px;
+    }
+  }
+
+  #curso_andamento {
+    background-color: var(--corTransp);
+    width: fit-content;
+    padding: 2px 9px 2px 20px;
+  }
+}
+
+#requisitos {
+  text-align: left;
+  display: block;
+  margin: 10vh 3vw 0;
+  background-color: var(--corBackground2);
+  padding: 20px 50px 40px;
+  border-radius: 15px;
+
+  h3 {
+    animation: none;
+    font-size: 27px;
+    margin-left: 2vw;
+    padding: 5px 10px;
+
+    &::after {
+      height: 0;
+    }
+  }
+
+  #requis_itens {
+    text-align: center;
+    padding: 0 6vw;
+
+    p {
+      font-size: 17px;
+      display: inline-block;
+      margin: 20px 30px;
+
+      &::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        margin-right: 10px;
+        margin-bottom: 2px;
+        display: inline-block;
+        border-radius: 50%;
+
+        animation: efeito_barra 1s normal;
+
+        @include gradiente;
+      }
+    }
+  }
+}
+
+.aulas {
+  text-align: left;
+
+  h2 {
+    margin: 10vh 0 5vh;
+    font-size: 35px;
+    margin-left: 4vw;
+  }
+
+  .aulas_container {
+    text-align: center;
+    margin: 0 6.5vw;
+
+    .aulas_itens {
+      text-align: left;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 auto 2.5vh;
+
+      img {
+        display: inline-block;
+        width: 25vw;
+        height: 15vw;
+        border-radius: 8px;
+      }
+
+      .aulas_itens_texto {
+        margin-top: 3vh;
+
+        .aulas_itens_titulo {
+          font-family: $fonMono;
+          font-weight: bold;
+        }
+
+        .aulas_itens_tempo {
+          color: var(--corLink);
+          margin-top: 25px;
+        }
+      }
+    }
+  }
+}

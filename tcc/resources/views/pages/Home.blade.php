@@ -1,44 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ asset('css/principal.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/paginas.css') }}" />
-    <link
-      rel="shortcut icon"
-      href="{{ asset('img/icone_charlie.png') }}"
-      type="image/x-icon"
-    />
-    <script src="{{ asset('js/principal.js') }}"></script>
-    <script
-      src="https://kit.fontawesome.com/04cbf46b06.js"
-    ></script>
-    <title>Página Inicial - TCC</title>
-  </head>
-  <body>
-    <nav>
-      <a href="index.html" id="logo"
-        ><img src="Imagens/Icones/icone_charlie1-2.png" title="logo" /><p>Charlie</p><img
-          src="Imagens/Icones/icone_charlie2-2.png" title="logo"
-      /></a>
-      <section class="nav-direita-normal" id="navbar">
-        <i
-          class="fas fa-moon"
-          onclick="change_mode()"
-          alt="Modo escuro"
-          id="change_mode"
-        ></i>
-        <a href="#" id="nav-link">Sobre nós</a>
-        <a href="#" id="nav-link">Cursos</a>
-        <a href="inscrever.html" class="botao">Inscreva-se</a>
-        <a href="javascript:void(0);" id="open_nav" onclick="open_nav()">
-          <i class="fa fa-bars"></i>
-        </a>
-      </section>
-    </nav>
-    <main><p>Lorem, ipsum dolor sit amet <mark class="comentario">/*consectetur adipisicing elit.*/</mark> Voluptate eos sequi ratione veritatis? Ratione fugiat laudantium quae unde odio, non earum pariatur deserunt corporis, inventore accusantium sint porro necessitatibus, tempore saepe. Alias sint repellendus eveniet possimus sed fuga, sunt voluptatum.</p><main>
-  </body>
-</html>
+@extends('layouts.layoutPrincipal')
+@section('content')
 
+      <div class="titulo_principal">
+        <img src="{{ asset('img/icone_charlie1-2.png') }}" class="img-1" />
+        <h1 id="titulo_principal">
+          <p>Aprenda programação</p>
+          <p style="font-weight: bold">gratuitamente!</p>
+        </h1>
+        <img class="img-2" src="{{ asset('img/icone_charlie2-2.png') }}" alt="" />
+        <p id="txtTitulo">
+          <mark>/* </mark>Charlie é uma plataforma de estudos que disponibiliza
+          cursos na área da programação sem qualquer custo.<mark> */</mark>
+        </p>
+
+        <section id="botoes">
+          <a href="inscrever.html" class="botao" id="btnTitInscrever"
+            >Quero me inscrever!</a
+          >
+          <a href="login.html" class="botao" id="btnTitLogar"
+            >Já sou inscrito</a
+          >
+        </section>
+      </div>
+
+      <div class="cursos">
+        <h2>Nossos cursos</h2>
+        <div class="cursos_itens">
+          <div class="item_curso1" id="num_1">
+            <div class="num_curso">1</div>
+            <div class="texto_curso"><p>Nome do curso</p></div>
+          </div>
+
+          <div class="item_curso2" id="num_2">
+            <div class="num_curso">2</div>
+            <div class="texto_curso"><p>Nome do curso</p></div>
+          </div>
+
+          <div class="item_curso3" id="num_3">
+            <div class="num_curso">3</div>
+            <div class="texto_curso"><p>Nome do curso</p></div>
+          </div>
+        </div>
+        <p><mark>//Clique para ver mais</mark></p>
+      </div>
+    </main>
+
+    <div class="final">
+      <div class="titulo"><h1>Se interessou? É de graça. Clica aí!</h1></div>
+      <a href="inscrever.html"
+        ><button class="botao">Inscrever-se :)</button></a
+      >
+    </div>
+
+@stop

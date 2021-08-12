@@ -1,0 +1,324 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+.black-mode:root {
+  --corBackground: #08111b /*#141442*/;
+  --corBackground2: #020b1399;
+  --corBackground3: #01050899;
+  --corTransp: #04123580;
+  --corFonte: white;
+  --verde_medio: #30828dde;
+  --corComentario: #3d5c7e;
+  --corEscuro: #010a12;
+  --corLink: #069aad;
+  --corNotif: #04081199;
+}
+
+.mid-mode:root {
+  --corBackground: #4073e0;
+  --corBackground2: #1a64c599;
+  --corBackground3: #04489699;
+  --corTransp: #06428680;
+  --corFonte: white;
+  --verde_medio: #3989bede;
+  --corComentario: #6aa3e4;
+  --corEscuro: #010712;
+  --corLink: #71cef3;
+  --corNotif: #2073c099;
+}
+
+.white-mode:root {
+  --corBackground: white;
+  --corBackground2: #c8e6ee90;
+  --corBackground3: #8eb9c490;
+  --corTransp: #8fe5fd99;
+  --corFonte: #142d57;
+  --verde_medio: #88d6dfd8;
+  --corComentario: #7bbed3;
+  --corEscuro: #010a12;
+  --corLink: #026891;
+  --corNotif: #e6ffff99;
+}
+
+@-webkit-keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes efeito_barra {
+  to {
+    background: transparent;
+  }
+}
+
+@-webkit-keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes efeito_maquina {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes efeito_mostra {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(70px);
+            transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes efeito_mostra {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(70px);
+            transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes efeito_mostra_notif {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(120px);
+            transform: translatex(120px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes efeito_mostra_notif {
+  from {
+    opacity: 0;
+    -webkit-transform: translatex(120px);
+            transform: translatex(120px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+main {
+  margin-top: 90px;
+}
+
+#diretorios {
+  display: block;
+  text-align: left;
+  font-size: 23px;
+  top: 110px;
+  position: relative;
+  margin-left: 10vw;
+}
+
+#diretorios p {
+  font-family: "Oxygen Mono";
+  display: inline;
+}
+
+#diretorios #dir_atual {
+  border-bottom: 2px solid var(--corComentario);
+}
+
+#curso {
+  margin-top: 40px;
+  text-align: left;
+  display: block;
+}
+
+#curso #titulo_curso {
+  margin: 20px auto 35px;
+  display: block;
+  font-size: 35px;
+}
+
+#curso #titulo_curso i {
+  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
+  background: linear-gradient(to right, #34f5c6, #1dcdfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#curso #titulo_curso::after {
+  width: 0;
+}
+
+#curso #titulo_curso, #curso #titulo_curso::after {
+  -webkit-animation: none;
+          animation: none;
+}
+
+#curso #dados_curso {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1vw;
+  -ms-grid-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.2fr 0.8fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#curso #dados_curso #img_curso img {
+  width: 95%;
+  height: auto;
+  border-radius: 8px;
+}
+
+#curso #descricao {
+  font-size: 17px;
+}
+
+#curso #descricao #desc_lista {
+  margin: 7vh auto;
+  display: block;
+}
+
+#curso #descricao #desc_lista #desc_lista_item {
+  display: block;
+  margin-left: 25px;
+}
+
+#curso #descricao #desc_lista #desc_lista_item p {
+  display: inline;
+}
+
+#curso #descricao #desc_lista #desc_lista_item i {
+  margin-right: 10px;
+  display: inline;
+  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
+  background: linear-gradient(to right, #34f5c6, #1dcdfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#curso #descricao #desc_botao {
+  padding: 10px 30px;
+  margin-top: 20px;
+}
+
+#curso #curso_andamento {
+  background-color: var(--corTransp);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 9px 2px 20px;
+}
+
+#requisitos {
+  text-align: left;
+  display: block;
+  margin: 10vh 3vw 0;
+  background-color: var(--corBackground2);
+  padding: 20px 50px 40px;
+  border-radius: 15px;
+}
+
+#requisitos h3 {
+  -webkit-animation: none;
+          animation: none;
+  font-size: 27px;
+  margin-left: 2vw;
+  padding: 5px 10px;
+}
+
+#requisitos h3::after {
+  height: 0;
+}
+
+#requisitos #requis_itens {
+  text-align: center;
+  padding: 0 6vw;
+}
+
+#requisitos #requis_itens p {
+  font-size: 17px;
+  display: inline-block;
+  margin: 20px 30px;
+}
+
+#requisitos #requis_itens p::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-animation: efeito_barra 1s normal;
+          animation: efeito_barra 1s normal;
+  background: -webkit-gradient(linear, left top, right top, from(#34f5c6), to(#1dcdfe));
+  background: linear-gradient(to right, #34f5c6, #1dcdfe);
+}
+
+.aulas {
+  text-align: left;
+}
+
+.aulas h2 {
+  margin: 10vh 0 5vh;
+  font-size: 35px;
+  margin-left: 4vw;
+}
+
+.aulas .aulas_container {
+  text-align: center;
+  margin: 0 6.5vw;
+}
+
+.aulas .aulas_container .aulas_itens {
+  text-align: left;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  margin: 0 auto 2.5vh;
+}
+
+.aulas .aulas_container .aulas_itens img {
+  display: inline-block;
+  width: 25vw;
+  height: 15vw;
+  border-radius: 8px;
+}
+
+.aulas .aulas_container .aulas_itens .aulas_itens_texto {
+  margin-top: 3vh;
+}
+
+.aulas .aulas_container .aulas_itens .aulas_itens_texto .aulas_itens_titulo {
+  font-family: "Oxygen Mono";
+  font-weight: bold;
+}
+
+.aulas .aulas_container .aulas_itens .aulas_itens_texto .aulas_itens_tempo {
+  color: var(--corLink);
+  margin-top: 25px;
+}
+/*# sourceMappingURL=cursos.css.map */
