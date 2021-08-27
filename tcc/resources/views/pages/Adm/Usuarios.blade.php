@@ -1,7 +1,6 @@
 @extends('layouts.layoutAdministrativo')
 @section('content')
 <h4>Usuarios</h4>
-<div class="container">
     <div class="container mt-5">
         <table class="table table-bordered mb-5">
             <thead>

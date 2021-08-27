@@ -32,8 +32,16 @@ class LinguagemProgramacaoController extends Controller
         }
     }
 
-    public function store(UsuarioRequest $request)
+    public function store(Request $request)
     {
+        $api = env("API_URL") . '/api/linguagens';
+
+        $linguagem = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->post($api, [
+            'LP_NOME' => $request->input('LP_NOME'),
+            'LP_DS_AUDITORIA_LOGIN' => Auth::user()->NM_USUARIO . " - Linguagem criada"
+        ])->throw(function ($linguagem, $e) {
+            abort(500, $e->getMessage());
+        })->json();
     }
 
     public function show($id)

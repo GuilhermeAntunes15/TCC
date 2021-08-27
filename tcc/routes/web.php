@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmTCC\AdminController;
 use App\Http\Controllers\AdmTCC\CursoAulaController;
 use App\Http\Controllers\AdmTCC\CursoController as AdmTCCCursoController;
 use App\Http\Controllers\TCC\CursoController;
@@ -34,5 +35,7 @@ Route::resource('admin/linguagemProgramacao', LinguagemProgramacaoController::cl
 Route::resource('admin/curso', AdmTCCCursoController::class);
 Route::resource('admin/cursoAula', CursoAulaController::class);
 Route::resource('admin/usuarios', UsuariosController::class);
+
+Route::resource('admin', AdminController::class);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

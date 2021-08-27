@@ -13,10 +13,12 @@
             </div>
             <div class="form-group col-6">
                 <label for="">Nome</label>
-                <input type="text" class="form-control" name="nome">
+                <input type="text" class="form-control" name="LP_NOME">
             </div>
             
         </div>
+
+        
 
         <button class="btn btn-dark my-4">Cadastrar</button>
     </form>
