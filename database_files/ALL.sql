@@ -4,6 +4,7 @@ use tcc;
 
 CREATE TABLE T_USUARIO(
     CD_USUARIO INT(11) Primary key auto_increment,
+    US_NOME VARCHAR(100),
     US_LOGIN VARCHAR(20),
     US_EMAIL VARCHAR(60),
     US_SENHA VARCHAR(260),

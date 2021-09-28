@@ -16,7 +16,10 @@ class LinguagemProgramacaoController extends Controller
     public function index()
     {
         try {
-            return view('pages.Adm.LinguagemProgramacao');
+            $linguagens = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/linguagens');
+            $linguagens = json_decode($linguagens->body());
+
+            return view('pages.Adm.LinguagemProgramacao', ["linguagens" => $linguagens]);
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
@@ -38,16 +41,26 @@ class LinguagemProgramacaoController extends Controller
 
         $linguagem = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->post($api, [
             'LP_NOME' => $request->input('LP_NOME'),
-            'LP_DS_AUDITORIA_LOGIN' => Auth::user()->NM_USUARIO . " - Linguagem criada"
+            'dsAuditoria' => Auth::user()->NM_USUARIO . " - Linguagem criada"
         ])->throw(function ($linguagem, $e) {
-            abort(500, $e->getMessage());
+            dd($e->getMessage());
         })->json();
+
+        return redirect()->route('linguagemProgramacao.index');
+
     }
 
     public function show($id)
     {
         try {
-            return view('pages.Curso_aula');
+            $linguagem = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/linguagens/' . $id);
+            $linguagem = json_decode($linguagem->body());
+            $linguagem = $linguagem[0];
+        
+                return view('pages.Adm.LinguagemProgramacaoCrud.LinguagemProgramacaoVisualizar', [
+                    'linguagem' => $linguagem
+                ]);
+
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
@@ -56,13 +69,41 @@ class LinguagemProgramacaoController extends Controller
 
     public function edit($id)
     {
+        try {
+
+            $linguagem = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/linguagens/' . $id);
+            $linguagem = json_decode($linguagem->body());
+            $linguagem = $linguagem[0];
+        
+            return view('pages.Adm.LinguagemProgramacaoCrud.LinguagemProgramacaoEditar', [
+                'linguagem' => $linguagem
+            ]);
+
+        } catch (Exception $e) {
+            abort(500, $e->getMessage());
+        }
     }
 
     public function update(Request $request, $id)
     {
+        $api = env("API_URL") . '/api/linguagens/' . $id;
+
+        $resposta = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->put($api, [
+            'LP_NOME' => $request->input('LP_NOME'),
+            'flAtivoSN' => 'S',
+            'dsAuditoria' => Auth::user()->NM_USUARIO . " - Linguagens atualizado"
+        ])->throw(function ($resposta, $e) {
+            abort(500, $e->getMessage());
+        })->json();
+
+        return redirect()->route('linguagemProgramacao.index');
     }
 
     public function destroy($id)
     {
+        Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->delete(env("API_URL") . '/api/linguagens/' . $id);
+
+        return redirect()->route('linguagemProgramacao.index');
     }
-}
+
+} 

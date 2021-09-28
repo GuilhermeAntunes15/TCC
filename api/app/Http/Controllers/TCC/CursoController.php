@@ -22,15 +22,15 @@ class CursoController extends Controller
 
         $pdo = DB::getPdo()->prepare($sql);
 
-        $titulo = $request->titulo;
-        $descricao = $request->descricao;
-        $qt_aula = $request->qt_aula;
+        $titulo = $request->CUR_TITULO;
+        $descricao = $request->CUR_DESCRICAO;
+        $qt_aula = $request->CUR_QT_AULA;
 
-        $req01 = $request->req01;
-        $req02 = $request->req02;
-        $req03 = $request->req03;
-        $req04 = $request->req04;
-        $req05 = $request->req05;
+        $req01 = $request->CUR_REQUERIMENTO_01;
+        $req02 = $request->CUR_REQUERIMENTO_02;
+        $req03 = $request->CUR_REQUERIMENTO_03;
+        $req04 = $request->CUR_REQUERIMENTO_04;
+        $req05 = $request->CUR_REQUERIMENTO_05;
 
         $fl_ativo = 'S';
         $dt_auditoria = date('Y-m-d H:i:s');
@@ -76,14 +76,15 @@ class CursoController extends Controller
 
         $pdo = DB::getPdo()->prepare($sql);
 
-        $titulo = $request->titulo;
-        $descricao = $request->descricao;
-        $qt_aula = $request->qt_aula;
-        $req01 = $request->req01;
-        $req02 = $request->req02;
-        $req03 = $request->req03;
-        $req04 = $request->req04;
-        $req05 = $request->req05;
+        $titulo = $request->CUR_TITULO;
+        $descricao = $request->CUR_DESCRICAO;
+        $qt_aula = $request->CUR_QT_AULA;
+
+        $req01 = $request->CUR_REQUERIMENTO_01;
+        $req02 = $request->CUR_REQUERIMENTO_02;
+        $req03 = $request->CUR_REQUERIMENTO_03;
+        $req04 = $request->CUR_REQUERIMENTO_04;
+        $req05 = $request->CUR_REQUERIMENTO_05;
 
         $fl_ativo = 'S';
         $dt_auditoria = date('Y-m-d H:i:s');

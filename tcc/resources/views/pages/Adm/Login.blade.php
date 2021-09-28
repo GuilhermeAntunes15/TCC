@@ -92,14 +92,16 @@
     <div class="main">
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
-                <form>
+                <form action="{{route("admin.login")}}" method="post">
+                    @csrf
+                    @method('POST')
                     <div class="form-group">
                         <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="User Name">
+                        <input name="usuario" type="text" class="form-control" placeholder="User Name">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input name="senha" type="password" class="form-control" placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-black">Login</button>
                     <button type="submit" class="btn btn-secondary">Register</button>

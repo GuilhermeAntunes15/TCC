@@ -22,7 +22,7 @@ class LinguagemProgramacaoController extends Controller
 
         $pdo = DB::getPdo()->prepare($sql);
 
-        $nome = $request->nome;
+        $nome = $request->LP_NOME;
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
 
@@ -52,7 +52,7 @@ class LinguagemProgramacaoController extends Controller
 
         $pdo = DB::getPdo()->prepare($sql);
 
-        $nome = $request->login;
+        $nome = $request->LP_NOME;
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
 

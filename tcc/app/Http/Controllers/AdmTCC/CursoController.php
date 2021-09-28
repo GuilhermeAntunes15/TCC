@@ -16,7 +16,10 @@ class CursoController extends Controller
     public function index()
     {
         try {
-            return view('pages.Adm.Curso');
+            $cursos = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/cursos');
+            $cursos = json_decode($cursos->body());
+
+            return view('pages.Adm.Curso', ['cursos'=>$cursos]);
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
@@ -49,12 +52,22 @@ class CursoController extends Controller
         ])->throw(function ($linguagem, $e) {
             abort(500, $e->getMessage());
         })->json();
+
+        return redirect()->route('curso.index');
     }
 
     public function show($id)
     {
         try {
-            return view('pages.Curso_aula');
+
+            $curso = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/cursos/' . $id);
+            $curso = json_decode($curso->body());
+            $curso = $curso[0];
+        
+            return view('pages.Adm.CursoCrud.CursoView', [
+                'curso' => $curso
+            ]);
+
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
@@ -63,13 +76,51 @@ class CursoController extends Controller
 
     public function edit($id)
     {
+        try {
+            $curso = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/cursos/' . $id);
+            $curso = json_decode($curso->body());
+            $curso = $curso[0];
+
+
+            return view('pages.Adm.CursoCrud.CursoEditar', [
+                'curso' => $curso
+            ]);
+        } catch (Exception $e) {
+            abort(500, $e->getMessage());
+        }
     }
 
     public function update(Request $request, $id)
     {
+        $api = env("API_URL") . '/api/curso/' . $id;
+
+        $resposta = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->put($api, [
+            'CUR_TITULO' => $request->input('CUR_TITULO'),
+            'CUR_DESCRICACAO' => $request->input('CUR_DESCRICACAO'),
+            'CUR_QT_AULA' => $request->input('CUR_QT_AULA'),
+            'CUR_REQUERIMENTO_01' => $request->input('CUR_REQUERIMENTO_01'),
+            'CUR_REQUERIMENTO_02' => $request->input('CUR_REQUERIMENTO_02'),
+            'CUR_REQUERIMENTO_03' => $request->input('CUR_REQUERIMENTO_03'),
+            'CUR_REQUERIMENTO_04' => $request->input('CUR_REQUERIMENTO_04'),
+            'CUR_REQUERIMENTO_05' => $request->input('CUR_REQUERIMENTO_05'),
+            'flAtivoSN' => 'S',
+            'dsAuditoria' => Auth::user()->NM_USUARIO . " - Curso atualizado"
+        ])->throw(function ($resposta, $e) {
+            abort(500, $e->getMessage());
+        })->json();
+
+        return redirect()->route('curso.index');
     }
 
     public function destroy($id)
     {
+        Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->delete(env("API_URL") . '/api/cursos/' . $id);
+
+        return redirect()->route('curso.index');
     }
 }
+
+
+
+    
+

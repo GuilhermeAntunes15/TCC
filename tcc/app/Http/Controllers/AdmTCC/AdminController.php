@@ -22,7 +22,7 @@ class AdminController extends Controller
         }
     }
 
-    public function login()
+    public function dash()
     {
         try {
             return view('pages.Adm.Admin');

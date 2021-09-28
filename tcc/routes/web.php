@@ -35,7 +35,10 @@ Route::resource('admin/linguagemProgramacao', LinguagemProgramacaoController::cl
 Route::resource('admin/curso', AdmTCCCursoController::class);
 Route::resource('admin/cursoAula', CursoAulaController::class);
 Route::resource('admin/usuarios', UsuariosController::class);
+Route::post('admin/login', [UsuariosController::class, 'login'])->name('admin.login');
+Route::get('admin/logout', [UsuariosController::class, 'logout'])->name('admin.logout');
 
 Route::resource('admin', AdminController::class);
+Route::get('dash', [AdminController::class, 'dash'])->name('admin.dash');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

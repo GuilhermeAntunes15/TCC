@@ -10,19 +10,32 @@
                 <tr class="table-success">
                     <th scope="col">id</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Ativo?</th>
+                    <th scope="col">Opções</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($curva as $data)
-                <tr>
-                    <th scope="row">{{ $data->ID_CURVA }}</th>
-                    <td>{{ $data->PRODUTO_CURVA }}</td>
-                    <td>{{ $data->CLIENTE_CURVA }}</td>
-                    <td>{{ $data->ESTADO_CURVA }}</td>
-                    <td>{{ $data->VENDEDOR_CURVA }}</td>
-                </tr>
-                @endforeach --}}
+                @foreach($linguagens as $data)
+                    @if($data->LP_FL_LINGUAGEM_PROGRAMACAO_ATIVO_SN == "S")
+                        <tr>
+                            <th scope="row">{{ $data->CD_LINGUAGEM_PROGRAMACAO }}</th>
+                            <td>{{ $data->LP_NOME }}</td>
+                            <td scope="col">
+                                <a href="{{route('linguagemProgramacao.edit', $data->CD_LINGUAGEM_PROGRAMACAO)}}" style="text-decoration: none">
+                                    <button class="btn rounded-pill actionButton"><i class="fa fa-pen" aria-hidden="true"></i></button>
+                                </a>
+                                <a href="{{route('linguagemProgramacao.show', $data->CD_LINGUAGEM_PROGRAMACAO)}}" style="text-decoration: none">
+                                    <button class="btn rounded-pill actionButton"><i class="fa fa-eye"></i></button>
+                                </a>
+                                <form style="display: inline;" action="{{route('linguagemProgramacao.destroy', $data->CD_LINGUAGEM_PROGRAMACAO)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="hidden" name="idrede" value="">
+                                    <button class="btn rounded-pill actionButton" type="submit" onclick="return confirm('Deseja remover {{$data->LP_NOME}}?')"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
             </tbody>
         </table>
     </div>

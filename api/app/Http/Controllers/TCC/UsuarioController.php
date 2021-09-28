@@ -97,4 +97,5 @@ class UsuarioController extends Controller
 
         $pdo->execute();
     }
+
 }

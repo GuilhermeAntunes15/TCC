@@ -39,7 +39,15 @@ class CursoAulaController extends Controller
     public function show($id)
     {
         try {
-            return view('pages.Curso_aula');
+            $cursoaula = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/Curso_aula/' . $id);
+            $cursoaula = json_decode($cursoaula->body());
+            $cursoaula = $cursoaula[0];
+
+            return view('pages.Curso_aula', [
+               'cursoaula' => $cursoaula,
+               'operacao' => 'visualizar'
+            ]);
+
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
@@ -48,13 +56,43 @@ class CursoAulaController extends Controller
 
     public function edit($id)
     {
+        try {
+            $cursoaula = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/Curso_aula/' . $id);
+            $cursoaula = json_decode($cursoaula->body());
+            $cursoaula = $cursoaula[0];
+
+            return view('pages.Curso_aula', [
+               'cursoaula' => $cursoaula,
+               'operacao' => 'visualizar'
+            ]);
+
+        } catch (Exception $e) {
+            abort(500, $e->getMessage());
+        }
     }
 
     public function update(Request $request, $id)
     {
+        $api = env("API_URL") . '/api/Curso_aula/' . $id;
+
+        $resposta = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->put($api, [
+            'CURAU_TITULO' => $request->input('titulo'),
+            'CURAU_DESCRICAO' => $request->input('descricao'),
+            'CURAU_AULA' => $request->input('aula'),
+            'CURAU_TEMPO' => $request->input('tempo'),
+            'flAtivoSN' => 'S',
+            'dsAuditoria' => Auth::user()->NM_USUARIO . " - Curso_aula atualizado"
+        ])->throw(function ($resposta, $e) {
+            abort(500, $e->getMessage());
+        })->json();
+
+        return redirect()->route('Curso_aula.index');
     }
 
     public function destroy($id)
     {
+        Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->delete(env("API_URL") . '/api/Curso_aula/' . $id);
+
+        return redirect()->route('Curso_aula.index');
     }
 }
