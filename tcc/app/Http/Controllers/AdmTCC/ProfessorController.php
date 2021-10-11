@@ -11,21 +11,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
-class AdminController extends Controller
+class ProfessorController extends Controller
 {
     public function index()
     {
         try {
-            return view('pages.Adm.Professor');
-        } catch (Exception $e) {
-            abort(500, $e->getMessage());
-        }
-    }
+            $professor = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/professores');
+            $professor = json_decode($professor->body());
+            $professor = $professor ? $professor : [];
 
-    public function login()
-    {
-        try {
-            return view('pages.Adm.Professor');
+            return view('pages.Adm.Professor', ["professor" => $professor]);
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
@@ -34,13 +29,31 @@ class AdminController extends Controller
 
     public function create()
     {
-        
-       
+        try {
+            $usuarios = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/usuarios');
+            $usuarios = json_decode($usuarios->body());
+
+            return view('pages.Adm.ProfessorCrud.ProfessorCadastrar', ["usuarios" => $usuarios]);
+        } catch (Exception $e) {
+            abort(500, $e->getMessage());
+        }
     }
 
     public function store(Request $request)
     {
-       
+        $api = env("API_URL") . '/api/professores';
+
+        $professor = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->post($api, [
+            'cpf' => $request->input('cpf'),
+            'rg' => $request->input('rg'),
+            'cd_usuario' => $request->input('cd_usuario'),
+            'flAtivoSN' => 'S',
+            'dsAuditoria' => Auth::user()->NM_USUARIO . " - Professor cadastrado"
+        ])->throw(function ($professor, $e) {
+            abort(500, $e->getMessage());
+        })->json();
+
+        return redirect()->route('professor.index');
     }
 
     public function show($id)
@@ -50,9 +63,8 @@ class AdminController extends Controller
                 $prof = json_decode($prof->body());
                 $prof = $prof[0];
         
-                return view('pages.Professor.index', [
-                'Professor' => $prof,
-                    'operacao' => 'visualizar'
+                return view('pages.Adm.ProfessorCrud.ProfessorVisualizar', [
+                'professor' => $prof
                 ]);
             } catch (Exception $e) {
                     abort(500, $e->getMessage());
@@ -66,11 +78,14 @@ class AdminController extends Controller
                 $prof = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/professores/' . $id);
                 $prof = json_decode($prof->body());
                 $prof = $prof[0];
+
+                $usuarios = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/usuarios');
+                $usuarios = json_decode($usuarios->body());
         
         
-                return view('pages.Professor.index', [
-                'prof' => $prof,
-                'operacao' => 'editar'
+                return view('pages.Adm.ProfessorCrud.ProfessorEditar', [
+                'professor' => $prof,
+                'usuarios' => $usuarios
                 ]);
             } catch (Exception $e) {
                     abort(500, $e->getMessage());
@@ -82,11 +97,9 @@ class AdminController extends Controller
         $api = env("API_URL") . '/api/professor/' . $id;
 
         $resposta = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->put($api, [
-            'PRO_LOGIN' => $request->input('login'),
-            'PRO_EMAIL' => $request->input('email'),
-            'PRO_SENHA' => $request->input('senha'),
-            'PRO_CPF' => $request->input('cpf'),
-            'PRO_DT_NASCIMENTO' => $request->input('dtnascimento'),
+            'cpf' => $request->input('cpf'),
+            'rg' => $request->input('rg'),
+            'cd_usuario' => $request->input('CD_USUARIO'),
             'flAtivoSN' => 'S',
             'dsAuditoria' => Auth::user()->NM_USUARIO . " - Professor atualizado"
         ])->throw(function ($resposta, $e) {

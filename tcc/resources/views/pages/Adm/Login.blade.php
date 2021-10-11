@@ -85,8 +85,8 @@
 
     <div class="sidenav">
         <div class="login-main-text">
-            <h2>Application<br> Login Page</h2>
-            <p>Login or register from here to access.</p>
+            <h2>Charlie<br> Login Page</h2>
+            <p>Login in admin page.</p>
         </div>
     </div>
     <div class="main">
@@ -104,7 +104,7 @@
                         <input name="senha" type="password" class="form-control" placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-black">Login</button>
-                    <button type="submit" class="btn btn-secondary">Register</button>
+                    {{-- <button type="submit" class="btn btn-secondary">Register</button> --}}
                 </form>
             </div>
         </div>

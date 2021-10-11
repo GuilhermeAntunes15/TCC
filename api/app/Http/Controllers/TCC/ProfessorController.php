@@ -17,27 +17,25 @@ class ProfessorController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $sql = "CALL PR_T_PROFESSOR_INSERT(@CD_PROFESSOR, :1, :2, :3, :4, :5, :6, :7, :8)";
+    {   
+        $sql = "CALL PR_T_PROFESSOR_INSERT(@CD_PROFESSOR, :1, :2, :3, :4, :5, :6)";
 
         $pdo = DB::getPdo()->prepare($sql);
 
-        $login = $request->login;
-        $email = $request->email;
-        $senha = $request->senha;
         $cpf = $request->cpf;
-        $dt_nasc = $request->dt_nasc;
+        $rg = $request->rg;
+        $cd_usuario = $request->cd_usuario;
+        $cpf = $request->cpf;
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
 
-        $pdo->bindValue(':1', $login);
-        $pdo->bindValue(':2', $email);
-        $pdo->bindValue(':3', $senha);
-        $pdo->bindValue(':4', $cpf);
-        $pdo->bindValue(':5', $dt_nasc);
-        $pdo->bindValue(':6', 'S');
-        $pdo->bindValue(':7', $dt_auditoria);
-        $pdo->bindValue(':8', $ds_auditoria);
+
+        $pdo->bindValue(':1', $cpf);
+        $pdo->bindValue(':2', $rg);
+        $pdo->bindValue(':3', 'S');
+        $pdo->bindValue(':4', $dt_auditoria);
+        $pdo->bindValue(':5', $ds_auditoria);
+        $pdo->bindValue(':6', $cd_usuario);
 
         $pdo->execute();
 
@@ -60,23 +58,20 @@ class ProfessorController extends Controller
 
         $pdo = DB::getPdo()->prepare($sql);
 
-        $login = $request->login;
-        $email = $request->email;
-        $senha = $request->senha;
         $cpf = $request->cpf;
-        $dt_nasc = $request->dt_nasc;
+        $rg = $request->rg;
+        $cd_usuario = $request->cd_usuario;
+        $cpf = $request->cpf;
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
 
         $pdo->bindValue(':1', $id);
-        $pdo->bindValue(':2', $login);
-        $pdo->bindValue(':3', $email);
-        $pdo->bindValue(':4', $senha);
-        $pdo->bindValue(':5', $cpf);
-        $pdo->bindValue(':6', $dt_nasc);
-        $pdo->bindValue(':7', 'S');
-        $pdo->bindValue(':8', $dt_auditoria);
-        $pdo->bindValue(':9', $ds_auditoria);
+        $pdo->bindValue(':2', $cpf);
+        $pdo->bindValue(':3', $rg);
+        $pdo->bindValue(':4', 'S');
+        $pdo->bindValue(':5', $dt_auditoria);
+        $pdo->bindValue(':6', $ds_auditoria);
+        $pdo->bindValue(':7', $cd_usuario);
 
         $pdo->execute();
     }

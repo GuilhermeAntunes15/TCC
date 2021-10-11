@@ -23,6 +23,6 @@
             
         </div>
 
-        <button class="btn btn-dark my-4">Cadastrar</button>
+        <button class="btn btn-dark my-4">Editar</button>
     </form>
 @stop

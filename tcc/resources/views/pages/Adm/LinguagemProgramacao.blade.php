@@ -23,9 +23,6 @@
                                 <a href="{{route('linguagemProgramacao.edit', $data->CD_LINGUAGEM_PROGRAMACAO)}}" style="text-decoration: none">
                                     <button class="btn rounded-pill actionButton"><i class="fa fa-pen" aria-hidden="true"></i></button>
                                 </a>
-                                <a href="{{route('linguagemProgramacao.show', $data->CD_LINGUAGEM_PROGRAMACAO)}}" style="text-decoration: none">
-                                    <button class="btn rounded-pill actionButton"><i class="fa fa-eye"></i></button>
-                                </a>
                                 <form style="display: inline;" action="{{route('linguagemProgramacao.destroy', $data->CD_LINGUAGEM_PROGRAMACAO)}}" method="post">
                                     @csrf
                                     @method('delete')
