@@ -1,8 +1,22 @@
-// COOKIES P/ TEMA
-var html = document.querySelector("html");
-var navbar = document.getElementById("navbar"); // pega a navbar pra deixar responsiva
+// VARIÁVEIS ---------------------------------------------
+let html = document.querySelector("html");
+let navbar; // pega a navbar pra deixar responsiva
+let notif;
+let janela_notif;
 
-// MANTÉM TEMA QUANDO ENTRA NO SITE COM OS COOKIES
+// NAVBAR RESPONSIVA ---------------------------------------
+function resp_nav() {
+  navbar = document.getElementById("navbar");
+
+  if (navbar.className == "") {
+    navbar.className += " responsivo";
+    console.log("funfou");
+  } else {
+    navbar.className = "";
+  }
+}
+
+// MANTÉM TEMA QUANDO ENTRA NO SITE COM OS COOKIES --------
 if (Cookies.get("mid-mode")) {
   html.className = "mid-mode";
 } else if (Cookies.get("white-mode")) {
@@ -13,7 +27,7 @@ if (Cookies.get("mid-mode")) {
   html.className = "black-mode";
 }
 
-// MUDAR TEMA
+// MUDAR TEMA ---------------------------------------------
 function change_mode() {
   if (html.className == "black-mode") {
     Cookies.remove("white-mode");
@@ -36,11 +50,27 @@ function change_mode() {
   }
 }
 
-// NAVBAR RESPONSIVA
-function resp_nav() {
-  if (navbar.className === "navbar") {
-    navbar.className += " responsivo";
-  } else {
-    navbar.className = "navbar";
-  }
+function semScroll() {
+  window.scrollTo(0, 0);
+}
+
+function notifAbre($nome_notif, $janela_notif) {
+  janela_notif = document.getElementById($janela_notif);
+  notif = document.getElementById($nome_notif);
+  janela_notif.style.display = "block";
+  notif.style.display = "block";
+  window.addEventListener("scroll", semScroll);
+}
+
+function notifFecha($nome_notif, $janela_notif) {
+  janela_notif = document.getElementById($janela_notif);
+  notif = document.getElementById($nome_notif);
+  janela_notif.style.display = "none";
+  notif.style.display = "none";
+  window.removeEventListener("scroll", semScroll);
+}
+
+function notifFechaCookies($nome_notif) {
+  notif = document.getElementById($nome_notif);
+  notif.style.display = "none";
 }

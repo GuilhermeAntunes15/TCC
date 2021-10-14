@@ -5,7 +5,7 @@
         <button class="btn btn-dark rounded-pill" onclick="window.location.href = '{{route('curso.index')}}'">Voltar</button>
     </div>
     
-    <form action="{{route('curso.update', $curso->CD_CURSO)}}" method="post">
+    <form action="{{route('curso.update', $curso->CD_CURSO)}}" enctype="multipart/form-data" method="post">
         @method('put')
         @csrf
         <div class="container ">
@@ -29,10 +29,24 @@
                     <input value="{{$curso->CUR_QT_AULA}}" type="number" class="form-control" name="CUR_QT_AULA">
                 </div>
 
+                <div class="form-group col-md-2">
+                    <label for="">Imagem</label>
+                    <input type="file" value="{{$curso->CUR_BL_IMG}}" class="form-control" name="foto">
+
+                    <input type="hidden" value="{{$curso->CUR_BL_IMG}}" name="foto">
+                    <input type="hidden" value="{{$curso->CUR_NM_IMG}}" name="nomeImg">
+                </div>
+
                 <div class="form-groupcol col-md-2">
-                    <label for="">Linguagens</label>
+                    <label for="">Linguagem</label>
                     <select name="CD_LINGUAGEM_PROGRAMACAO" class="form-control" id="">
-                        <option value="">Selecione</option>
+                        @foreach($linguagens as $linguagem)
+                            @if($curso->CD_LINGUAGEM_PROGRAMACAO == $linguagem->CD_LINGUAGEM_PROGRAMACAO)
+                                <option value="{{$linguagem->CD_LINGUAGEM_PROGRAMACAO}}" selected>{{$linguagem->LP_NOME}}</option>
+                            @else
+                                <option value="{{$linguagem->CD_LINGUAGEM_PROGRAMACAO}}">{{$linguagem->LP_NOME}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 

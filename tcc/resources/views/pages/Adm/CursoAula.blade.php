@@ -3,7 +3,7 @@
     <h4>Aulas de Cursos</h4>
     <div class="container mt-5">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <button type="button" class="btn btn-dark rounded-pill" onclick="window.location.href = '{{route('linguagemProgramacao.create')}}'">Adicionar</button>
+            <button type="button" class="btn btn-dark rounded-pill" onclick="window.location.href = '{{route('aulas.create')}}'">Adicionar</button>
         </div>
         <table class="table table-bordered mb-5">
             <thead>

@@ -4,24 +4,6 @@ main {
   margin-top: 90px;
 }
 
-#diretorios {
-  display: block;
-  text-align: left;
-  font-size: 23px;
-  top: 110px;
-  position: relative;
-  margin-left: 10vw;
-
-  p {
-    font-family: $fonMono;
-    display: inline;
-  }
-
-  #dir_atual {
-    border-bottom: 2px solid var(--corComentario);
-  }
-}
-
 #curso {
   margin-top: 40px;
   text-align: left;
@@ -65,6 +47,10 @@ main {
   #descricao {
     font-size: 17px;
 
+    .comentario {
+      font-size: 23.5px;
+    }
+
     #desc_lista {
       margin: 7vh auto;
       display: block;
@@ -93,9 +79,14 @@ main {
   }
 
   #curso_andamento {
-    background-color: var(--corTransp);
+    background-color: var(--corBackground2);
     width: fit-content;
-    padding: 2px 9px 2px 20px;
+    padding: 2px 15px;
+    position: relative;
+    margin-top: -10px;
+    margin-left: 20px;
+    font-size: 21px;
+    //border: 1px solid $verde;
   }
 }
 
@@ -103,18 +94,21 @@ main {
   text-align: left;
   display: block;
   margin: 10vh 3vw 0;
-  background-color: var(--corBackground2);
   padding: 20px 50px 40px;
-  border-radius: 15px;
+  border-radius: 8px;
+  border: solid 1px var(--corComentario);
+  box-shadow: 13px 13px 0px var(--corNotif);
+  background-color: var(--corBackground);
 
   h3 {
     animation: none;
     font-size: 27px;
     margin-left: 2vw;
-    padding: 5px 10px;
+    padding: 2px 8px;
+    background-color: var(--verde_medio);
 
     &::after {
-      height: 0;
+      width: 0;
     }
   }
 
@@ -155,23 +149,42 @@ main {
 
   .aulas_container {
     text-align: center;
-    margin: 0 6.5vw;
+    margin: auto;
+    width: 50vw;
+
+    a {
+      &:visited {
+        text-decoration: none;
+        color: var(--corFonte);
+      }
+    }
 
     .aulas_itens {
+      border-radius: 8px;
       text-align: left;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      margin: 0 auto 2.5vh;
+      margin: 0 auto 3vh;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--corFonte);
+      flex-wrap: wrap;
+
+      &:hover {
+        background-color: var(--corNotif);
+        transition: 0.2s;
+      }
 
       img {
         display: inline-block;
         width: 25vw;
         height: 15vw;
         border-radius: 8px;
+        //cursor: pointer;
       }
 
       .aulas_itens_texto {
-        margin-top: 3vh;
+        margin: 3vh 0 0 3vw;
 
         .aulas_itens_titulo {
           font-family: $fonMono;
@@ -186,3 +199,30 @@ main {
     }
   }
 }
+
+#cursos_menu_grid {
+  display: grid;
+  grid-template-columns: repeat(3fr);
+  grid-gap: 50px;
+
+  #cursos_menu {
+    margin: 0;
+    text-align: left;
+
+    .aulas_itens {
+      width: 70vw;
+      text-align: left;
+
+      .aulas_itens_texto {
+        margin: 0;
+        text-align: left;
+      }
+    }
+  }
+}
+
+/*
+footer {
+  bottom: 0;
+}
+*/

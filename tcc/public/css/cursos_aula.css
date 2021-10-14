@@ -368,4 +368,96 @@ footer {
   bottom: 0;
 }
 */
-/*# sourceMappingURL=cursos.css.map */
+#curso {
+  text-align: center;
+}
+
+#curso h2 {
+  text-align: left;
+}
+
+#video_curso {
+  background: black;
+  border-radius: 8px;
+  border: 1px solid var(--corComentario);
+  width: 85%;
+  margin: auto;
+  -webkit-box-shadow: 15px 15px 0px var(--corNotif);
+          box-shadow: 15px 15px 0px var(--corNotif);
+}
+
+#video_curso video {
+  display: block;
+  border-radius: inherit;
+  width: 100%;
+  margin: auto;
+}
+
+#titulo_proximos_videos {
+  background-color: var(--verde_medio);
+  font-size: 30px;
+  padding: 3px 15px;
+  margin: 100px auto 70px;
+  display: inline-block;
+  -webkit-animation: none;
+          animation: none;
+}
+
+#titulo_proximos_videos::after {
+  -webkit-animation: none;
+          animation: none;
+}
+
+#proximos_videos_curso_grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+}
+
+#proximos_videos_curso_grid img {
+  width: 100%;
+  height: 250px;
+}
+
+#proximos_videos_curso_grid .proximos_videos_item {
+  margin: 0 2px 20px;
+  border-radius: 8px;
+  -webkit-transition: 0.03s;
+  transition: 0.03s;
+}
+
+#proximos_videos_curso_grid .proximos_videos_item img {
+  border-radius: 5px;
+}
+
+#proximos_videos_curso_grid .proximos_videos_item figure {
+  font-size: 20px;
+  margin: -40px 0 10px;
+}
+
+#proximos_videos_curso_grid .proximos_videos_item figcaption {
+  position: relative;
+  top: -50%;
+  opacity: 0;
+  color: white;
+  -webkit-transition: 0.06s;
+  transition: 0.06s;
+}
+
+#proximos_videos_curso_grid .proximos_videos_item figcaption i {
+  font-size: 45px;
+  margin: 0;
+  padding: 0;
+}
+
+#proximos_videos_curso_grid .proximos_videos_item:hover img {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+
+#proximos_videos_curso_grid .proximos_videos_item:hover figcaption {
+  opacity: 1;
+}
+/*# sourceMappingURL=cursos_aula.css.map */

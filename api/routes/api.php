@@ -3,6 +3,7 @@
 use App\Http\Controllers\JwtAuthController;
 use App\Http\Controllers\TCC\CursoController;
 use App\Http\Controllers\TCC\LinguagemProgramacaoController;
+use App\Http\Controllers\TCC\CursoAulaController;
 use App\Http\Controllers\TCC\MatriculaController;
 use App\Http\Controllers\TCC\ProfessorController;
 use App\Http\Controllers\TCC\UsuarioController;
@@ -29,6 +30,7 @@ Route::group(['middleware' => ['apiJwt']], function () {
     Route::apiResource('matriculas', MatriculaController::class);
     Route::apiResource('linguagens', LinguagemProgramacaoController::class);
     Route::apiResource('cursos', CursoController::class);
+    Route::apiResource('aulas', CursoAulaController::class);
 });
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();

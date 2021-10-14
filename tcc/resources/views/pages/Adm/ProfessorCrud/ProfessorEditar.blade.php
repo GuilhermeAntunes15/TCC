@@ -28,6 +28,7 @@
                             <option value="{{$usuario->CD_USUARIO}}" selected>{{$usuario->US_NOME}}</option>
                         @else
                         <option value="{{$usuario->CD_USUARIO}}">{{$usuario->US_NOME}}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>

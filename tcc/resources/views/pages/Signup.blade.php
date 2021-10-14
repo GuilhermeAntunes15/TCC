@@ -21,7 +21,7 @@
   </head>
   <body>
     <nav id="navbar" class="navbar">
-      <a href="index.html" id="logo">
+      <a href="{{route('index')}}" id="logo">
         <img src="{{ asset('img/icone_charlie1-2.png') }}" title="logo" />Charlie
         <img src="{{ asset('img/icone_charlie2-2.png') }}" title="logo"/>
       </a>

@@ -5,7 +5,7 @@
         <button class="btn btn-dark rounded-pill" onclick="window.location.href = '{{route('curso.index')}}'">Voltar</button>
     </div>
     
-    <form action="{{route('curso.store')}}" method="post">
+    <form action="{{route('curso.store')}}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="container ">
             <div class="row">  
@@ -28,10 +28,26 @@
                     <input type="number" class="form-control" name="CUR_QT_AULA">
                 </div>
 
+                <div class="form-group col-md-3">
+                    <label for="">Imagem</label>
+                    <input type="file" class="form-control" name="foto">
+                </div>
+
                 <div class="form-groupcol col-md-2">
-                    <label for="">Linguagens</label>
+                    <label for="">Linguagem</label>
                     <select name="CD_LINGUAGEM_PROGRAMACAO" class="form-control" id="">
-                        <option value="">Selecione</option>
+                        @foreach($linguagens as $linguagem)
+                            <option value="{{$linguagem->CD_LINGUAGEM_PROGRAMACAO}}">{{$linguagem->LP_NOME}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-groupcol col-md-2">
+                    <label for="">Professor</label>
+                    <select name="CD_PROFESSOR" class="form-control" id="">
+                        @foreach($professores as $professor)
+                            <option value="{{$professor->CD_PROFESSOR}}">{{$professor->US_NOME}}</option>
+                        @endforeach
                     </select>
                 </div>
                 

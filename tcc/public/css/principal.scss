@@ -1,6 +1,6 @@
 @import "variaveis";
 
-// ----------- INÍCIO -----------
+// --------------------------------------------------
 * {
   scroll-behavior: smooth;
   box-sizing: border-box;
@@ -32,7 +32,48 @@ body {
   @include transicao(0.2s);
 }
 
-//-- TÍTULOS --
+img {
+  @include sem_select;
+}
+
+a {
+  text-decoration: none;
+
+  &:visited,
+  &:active {
+    color: unset;
+  }
+}
+
+main {
+  text-align: center;
+  overflow-x: hidden;
+  //overflow-y: hidden;
+
+  @include transicao(0.2s);
+
+  @media screen and(max-width: 500px) {
+    margin: 9em 1vw;
+  }
+
+  @include tamanho(celular) {
+    margin: 9em 8vw;
+  }
+
+  @include tamanho(tablet) {
+    margin: 10em 6vw;
+  }
+
+  @include tamanho(desktop) {
+    margin: 10em 15vw;
+  }
+
+  h1 {
+    margin-top: 12vh;
+  }
+}
+
+// -------------- TÍTULOS ------------------------------------
 h1,
 h2,
 h3 {
@@ -46,23 +87,7 @@ h3 {
   animation: efeito_maquina 7.5s steps(70) normal;
 
   &::after {
-    content: "";
-    margin-left: 5px;
-    display: inline-block;
-
-    animation: efeito_barra 1s normal;
-
-    @include gradiente;
-
-    @include tamanho(celular) {
-      height: 3px;
-      width: 15px;
-    }
-
-    @include tamanho(tablet) {
-      height: 3.5px;
-      width: 19px;
-    }
+    @include after;
   }
 }
 
@@ -94,7 +119,7 @@ h2 {
   }
 }
 
-//-- BOTÃO --
+// -------------- BOTÕES ------------------------------------
 .botao {
   font-family: $fonMono;
   border: 1px solid var(--corFonte);
@@ -107,15 +132,17 @@ h2 {
   @include transicao(0.2s);
   @include transicao(0.25s);
 
-  &:hover {
+  &:hover,
+  &:active {
     color: var(--corEscuro);
     border: 1px solid transparent;
+    box-shadow: 4px 4px 0px var(--corNotif);
 
     @include gradiente;
   }
 }
 
-//-- NAVBAR --
+// -------------- NAVBAR ------------------------------------
 nav {
   color: var(--corFonte);
   opacity: 95%;
@@ -236,14 +263,225 @@ nav {
   }
 }
 
+// -------------- COMENTÁRIOS ------------------------------------
+
+mark,
+.comentario {
+  color: var(--corComentario);
+  background-color: transparent;
+  font-family: $fonMono;
+
+  @include transicao(0.2s);
+}
+
+// -------------- FOOTER ------------------------------------
+
+footer {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  z-index: -14;
+
+  @include transicao(0.2s);
+
+  p {
+    margin: 50px auto 30px;
+    font-size: 14px;
+    color: var(--corLink);
+    letter-spacing: 2px;
+  }
+}
+
+// -------------- DIRETORIOS------------------------------------
+
+#diretorios {
+  display: block;
+  text-align: left;
+  font-size: 23px;
+  top: 110px;
+  position: relative;
+  margin-left: 10vw;
+
+  p {
+    font-family: $fonMono;
+    display: inline;
+
+    a {
+      text-decoration: none;
+      color: var(--corComentario);
+
+      &:visited {
+        text-decoration: unset;
+        color: unset;
+      }
+
+      &:hover {
+        border-bottom: 1px solid var(--corFonte);
+        color: var(--corFonte);
+      }
+    }
+  }
+
+  #dir_atual {
+    @include grad_font;
+
+    &:hover {
+      color: unset;
+    }
+  }
+}
+
+// -------------- TOOLTIPS ------------------------------------
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltip_texto {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -15%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltip_texto::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+.tooltip:hover .tooltip_texto {
+  visibility: visible;
+  opacity: 1;
+}
+
+input {
+  color: var(--corFonte);
+  font-family: $fonNormal;
+  display: block;
+  font-size: 1.1em;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 1.7px #9fadbe99;
+  padding-bottom: 10px;
+  margin-bottom: 5vh;
+
+  &:focus {
+    outline: none;
+    border-bottom-color: var(--corLink);
+
+    @include transicao(0.1s);
+  }
+
+  @include tamanho(celular) {
+    font-size: 0.9em;
+  }
+}
+
+// -------------- NOTIFICAÇÕES ------------------------------------
+
+.notif_janela {
+  content: "";
+  background-color: var(--corNotif);
+  width: 300vw;
+  height: 300vh;
+  position: absolute;
+  top: -200vh;
+  left: -200vw;
+  z-index: 2000;
+  display: none;
+}
+
+.notif {
+  position: fixed;
+  display: block;
+  text-align: center;
+  background-color: var(--corNotif2);
+  border: 1px solid var(--corComentario);
+  border-radius: 8px;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.068);
+  padding: 45px;
+  z-index: 1000;
+
+  animation-name: animatetop;
+  animation-duration: 0.3s;
+
+  .notif_icone {
+    font-weight: bold;
+    position: absolute;
+    top: -90px;
+    left: 34%;
+    font-size: 3.5em;
+    letter-spacing: 12px;
+    display: inline-block;
+
+    @include grad_font;
+    @include sem_select;
+  }
+
+  h3 {
+    animation: none;
+    margin: 4vh 0 0;
+    color: var(--corNotifFont);
+    font-size: 1em;
+  }
+
+  .notif_texto {
+    color: var(--corNotifFont);
+  }
+
+  .notif_div_botoes {
+    display: block;
+    text-align: center;
+
+    button {
+      cursor: pointer;
+      padding: 5px 35px;
+      margin: 4vh 10px 0;
+      border-radius: 20px;
+      border: 1.5px solid var(--corComentario);
+      background-color: transparent;
+      color: var(--corNotifFont);
+      font-size: 19px;
+
+      @include transicao(0.1s);
+
+      &:hover {
+        @include gradiente;
+        color: var(--corEscuro);
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+// -------------- TAG FIGURE (ÍCONES FLUTUANTES) ------------------------------------
 .figuras {
   @include sem_select;
 
   #fig0 {
-    color: var(--verde_medio);
-    font-size: 30px;
-    left: 30%;
-    top: 8vh;
+    color: var(--corBackground2);
+    font-size: 20px;
+    right: 30%;
+    top: 12vh;
     position: fixed;
     z-index: -10;
     animation: efeito_mostra 2.5s forwards ease-in-out;
@@ -251,19 +489,19 @@ nav {
 
   #fig1 {
     color: $verde;
-    font-size: 38px;
+    font-size: 20px;
     right: 22%;
     top: 10vh;
-    position: absolute;
-    letter-spacing: 15px;
-    z-index: 10;
+    position: fixed;
+    letter-spacing: 8px;
+    z-index: -10;
     animation: efeito_mostra 1s forwards ease-in-out;
   }
 
   #fig2 {
     color: var(--corBackground2);
     opacity: 0.6;
-    font-size: 25px;
+    font-size: 20px;
     right: 20%;
     top: 42vh;
     position: fixed;
@@ -273,12 +511,12 @@ nav {
 
   #fig3 {
     color: $verde;
-    font-size: 40px;
+    font-size: 30px;
     left: 20%;
     top: 50vh;
-    position: absolute;
+    position: fixed;
     letter-spacing: 10px;
-    z-index: 11;
+    z-index: -11;
     animation: efeito_mostra 1s forwards ease-in-out;
   }
 
@@ -286,10 +524,10 @@ nav {
     color: $azul;
     font-family: $fonMono;
     font-size: 25px;
-    position: absolute;
+    position: fixed;
     right: 24%;
     top: 73vh;
-    z-index: 12;
+    z-index: -12;
     letter-spacing: 12px;
     animation: efeito_mostra 1s forwards ease-in-out;
   }
@@ -321,119 +559,21 @@ nav {
     color: $azul;
     font-family: $fonMono;
     font-size: 20px;
-    position: absolute;
+    position: fixed;
     left: 26%;
-    top: 154vh;
-    z-index: 12;
+    top: 25vh;
+    z-index: -12;
     animation: efeito_mostra 1s forwards ease-in-out;
   }
 
   #fig8 {
     color: $verde;
-    font-size: 40px;
-    right: 25%;
-    top: 160vh;
-    position: absolute;
-    letter-spacing: 10px;
-    z-index: 11;
-    animation: efeito_mostra 1s forwards ease-in-out;
-  }
-}
-
-main {
-  text-align: center;
-  overflow-x: hidden;
-  //overflow-y: hidden;
-
-  @include transicao(0.2s);
-
-  @media screen and(max-width: 500px) {
-    margin: 9em 1vw;
-  }
-
-  @include tamanho(celular) {
-    margin: 9em 8vw;
-  }
-
-  @include tamanho(tablet) {
-    margin: 10em 6vw;
-  }
-
-  @include tamanho(desktop) {
-    margin: 10em 15vw;
-  }
-
-  h1 {
-    margin-top: 12vh;
-  }
-}
-
-mark,
-.comentario {
-  color: var(--corComentario);
-  background-color: transparent;
-  font-family: $fonMono;
-
-  @include transicao(0.2s);
-}
-
-footer {
-  background-color: var(--corBackground);
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  text-align: center;
-  z-index: -14;
-
-  @include transicao(0.2s);
-
-  p {
-    margin: 50px auto 30px;
-    font-size: 14px;
-    color: var(--corLink);
-    letter-spacing: 2px;
-  }
-}
-
-.notificacao {
-  position: fixed;
-  background-color: var(--corNotif);
-  border: 1px solid var(--corComentario);
-  border-radius: 0 20px 0 20px;
-  z-index: 2000;
-
-  span {
-    right: 0;
-    display: block;
-    position: absolute;
-  }
-}
-
-#notificacao_cookies {
-  right: 0;
-  position: absolute;
-  padding: 30px 40px;
-  bottom: 0;
-  margin: 50px;
-  position: fixed;
-  display: block;
-  animation: efeito_mostra_notif 0.7s forwards ease-in-out;
-
-  span {
-    cursor: pointer;
-    top: 5px;
-    right: 30px;
     font-size: 30px;
-
-    @include sem_select;
-  }
-
-  h3 {
-    animation: none;
-    margin-bottom: -2px;
-  }
-
-  p {
-    padding-left: 10px;
+    right: 25%;
+    top: 95vh;
+    position: fixed;
+    letter-spacing: 10px;
+    z-index: -11;
+    animation: efeito_mostra 1s forwards ease-in-out;
   }
 }

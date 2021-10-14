@@ -23,9 +23,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
-})->name('login');
+    return view('pages/Home');
+})->name('index');
+
+
 Route::get('signup', [UsuarioController::class, 'create'])->name('signup.create');
+Route::get('signin', [UsuarioController::class, 'create'])->name('signin.signin');
+
+Route::resource('cursos', CursoController::class);
+Route::get('cursos/lista', [CursoController::class, 'lista'])->name('cursos.lista');
+Route::get('curso/aula', [CursoController::class, 'aula'])->name('cursos.aula');
 
 
 Route::middleware(['auth', 'auth.prof'])->group(function () {
@@ -37,7 +44,7 @@ Route::middleware(['auth', 'auth.prof'])->group(function () {
 
     Route::resource('admin/linguagemProgramacao', LinguagemProgramacaoController::class);
     Route::resource('admin/curso', AdmTCCCursoController::class);
-    Route::resource('admin/cursoAula', CursoAulaController::class);
+    Route::resource('admin/aulas', CursoAulaController::class);
     Route::resource('admin/usuarios', UsuariosController::class);
 });
 

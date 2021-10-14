@@ -18,7 +18,7 @@ class CursoController extends Controller
 
     public function store(Request $request)
     {
-        $sql = "CALL PR_T_CURSO_INSERT(@CD_CURSO, :1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13)";
+        $sql = "CALL PR_T_CURSO_INSERT(@CD_CURSO, :1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13, :14, :15)";
 
         $pdo = DB::getPdo()->prepare($sql);
 
@@ -39,6 +39,9 @@ class CursoController extends Controller
         $cd_ling = $request->cd_ling;
         $cd_prof = $request->cd_prof;
 
+        $cur_bl_img = base64_decode($request->cur_bl_img);
+        $cur_nm_img = $request->cur_nm_img;
+
         $pdo->bindValue(':1', $titulo);
         $pdo->bindValue(':2', $descricao);
         $pdo->bindValue(':3', $qt_aula);
@@ -54,6 +57,10 @@ class CursoController extends Controller
         $pdo->bindValue(':11', $ds_auditoria);
         $pdo->bindValue(':12', $cd_ling);
         $pdo->bindValue(':13', $cd_prof);
+
+        $pdo->bindValue(':14', $cur_bl_img);
+        $pdo->bindValue(':15', $cur_nm_img);
+
 
         $pdo->execute();
 
@@ -72,7 +79,7 @@ class CursoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $sql = "CALL PR_T_CURSO_UPDATE(:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13, :14)";
+        $sql = "CALL PR_T_CURSO_UPDATE(:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :11, :12, :13, :14, :15, :16)";
 
         $pdo = DB::getPdo()->prepare($sql);
 
@@ -93,6 +100,9 @@ class CursoController extends Controller
         $cd_ling = $request->cd_ling;
         $cd_prof = $request->cd_prof;
 
+        $cur_bl_img = base64_decode($request->cur_bl_img);
+        $cur_nm_img = $request->cur_nm_img;
+
         $pdo->bindValue(':1', $id);
         $pdo->bindValue(':2', $titulo);
         $pdo->bindValue(':3', $descricao);
@@ -109,6 +119,9 @@ class CursoController extends Controller
         $pdo->bindValue(':12', $ds_auditoria);
         $pdo->bindValue(':13', $cd_ling);
         $pdo->bindValue(':14', $cd_prof);
+
+        $pdo->bindValue(':15', $cur_bl_img);
+        $pdo->bindValue(':16', $cur_nm_img);
 
         $pdo->execute();
     }

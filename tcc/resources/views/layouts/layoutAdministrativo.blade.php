@@ -34,7 +34,7 @@
                 <a href="{{route('curso.index')}}" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> 
                     <span class="nav_name">Courses</span> 
                 </a> 
-                <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> 
+                <a href="{{route("aulas.index")}}" class="nav_link"> <i class='bx bx-folder nav_icon'></i> 
                     <span class="nav_name">All Classes</span> 
                 </a>
                 <a href="{{route('professor.index')}}" class="nav_link"> <i class='fas fa-users nav_icon'></i> 

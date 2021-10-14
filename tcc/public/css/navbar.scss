@@ -31,6 +31,8 @@
     height: 15px;
     color: var(--corFonte);
     cursor: pointer;
+
+    @include transicao(0.2s);
   }
 
   #change_mode {
@@ -48,6 +50,7 @@
     width: 450px;
     background-color: var(--corBackground);
     float: right;
+    box-shadow: 10px 40px 20px rgba(0, 0, 0, 0.5);
 
     @include tamanho(celular) {
       margin: 10vh auto;
@@ -75,6 +78,7 @@
 
     .icon {
       display: inline-block;
+      @include transicao(0.2s);
     }
 
     #change_mode {

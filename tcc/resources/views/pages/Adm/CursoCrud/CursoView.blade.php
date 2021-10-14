@@ -28,11 +28,14 @@
                     <input readonly value="{{$curso->CUR_QT_AULA}}" type="number" class="form-control" name="CUR_QT_AULA">
                 </div>
 
-                <div class="form-groupcol col-md-2">
-                    <label for="">Linguagens</label>
-                    <select name="CD_LINGUAGEM_PROGRAMACAO" class="form-control" id="">
-                        <option value="">Selecione</option>
-                    </select>
+                <div class="form-group col-md-2">
+                    <label for="">Imagem</label>
+                    <input type="file" value="{{$curso->CUR_BL_IMG}}" class="form-control" name="foto">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="">Linguagem</label>
+                    <input readonly value="{{$curso->LP_NOME}}" type="number" class="form-control" name="LP_NOME">
                 </div>
                 
                 <!--- Pré-requisitos -->

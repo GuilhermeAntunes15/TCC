@@ -11,19 +11,23 @@
   --corEscuro: #010a12;
   --corLink: #069aad;
   --corNotif: #04081199;
+  --corNotif2: #01080e;
+  --corNotifFont: white;
 }
 
 .mid-mode:root {
-  --corBackground: #4073e0;
+  --corBackground: #4085e0;
   --corBackground2: #1a64c599;
   --corBackground3: #04489699;
-  --corTransp: #06428680;
+  --corTransp: #0878b980;
   --corFonte: white;
-  --verde_medio: #3989bede;
+  --verde_medio: #4298b3de;
   --corComentario: #6aa3e4;
   --corEscuro: #010712;
   --corLink: #71cef3;
   --corNotif: #2073c099;
+  --corNotif2: #e2edf7;
+  --corNotifFont: #031120;
 }
 
 .white-mode:root {
@@ -36,7 +40,9 @@
   --corComentario: #7bbed3;
   --corEscuro: #010a12;
   --corLink: #026891;
-  --corNotif: #e6ffff99;
+  --corNotif: #daecec99;
+  --corNotif2: #fff;
+  --corNotifFont: #031120;
 }
 
 @-webkit-keyframes efeito_barra {
@@ -98,8 +104,8 @@
 @-webkit-keyframes efeito_mostra_notif {
   from {
     opacity: 0;
-    -webkit-transform: translatex(120px);
-            transform: translatex(120px);
+    -webkit-transform: translateX(120px);
+            transform: translateX(120px);
   }
   to {
     opacity: 1;
@@ -111,8 +117,8 @@
 @keyframes efeito_mostra_notif {
   from {
     opacity: 0;
-    -webkit-transform: translatex(120px);
-            transform: translatex(120px);
+    -webkit-transform: translateX(120px);
+            transform: translateX(120px);
   }
   to {
     opacity: 1;
@@ -257,6 +263,20 @@
   color: var(--corFonte);
 }
 
+@media screen and (max-width: 1340px) {
+  .titulo_principal #botoes .botao {
+    padding: 16px 20px;
+    position: static;
+    display: inline-block;
+    width: 20vw;
+    font-size: 15px;
+  }
+  .titulo_principal #botoes .botao:hover {
+    -webkit-transform: scale(102%);
+            transform: scale(102%);
+  }
+}
+
 .final {
   width: 100%;
   background: var(--corBackground2);
@@ -292,7 +312,7 @@
   background: linear-gradient(to right, #34f5c6, #1dcdfe);
   color: var(--corEscuro);
   border: none;
-  padding: 10px 47px;
+  padding: 10px 30px;
   font-size: 30px;
   margin-top: 7vh;
 }
@@ -325,6 +345,13 @@ footer {
   font-size: 1.2em;
   font-family: "Oxygen Mono";
   font-style: normal;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.cursos mark:hover {
+  border-bottom: solid 1.5px var(--corFonte);
+  color: var(--corFonte);
 }
 
 @media (max-width: 599px) {
@@ -344,6 +371,7 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 20px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -403,7 +431,7 @@ footer {
 .cursos .cursos_itens .item_curso3 {
   -webkit-box-shadow: inset 0 0 0 10000px var(--corTransp);
           box-shadow: inset 0 0 0 10000px var(--corTransp);
-  border: 1.5px solid var(--verde_medio);
+  border: 1.5px solid var(--corLink);
   border-radius: 8px;
   opacity: 85%;
   text-align: center;
@@ -412,12 +440,6 @@ footer {
   transition: 0.2s;
   -webkit-transition: 0.1s;
   transition: 0.1s;
-}
-
-.cursos .cursos_itens .item_curso1:hover .texto_curso,
-.cursos .cursos_itens .item_curso2:hover .texto_curso,
-.cursos .cursos_itens .item_curso3:hover .texto_curso {
-  color: white;
 }
 
 .cursos .cursos_itens .item_curso1:hover,
@@ -429,6 +451,12 @@ footer {
   -webkit-box-shadow: 0 0 15px var(--verde_medio);
           box-shadow: 0 0 15px var(--verde_medio);
   opacity: 100%;
+}
+
+.cursos .cursos_itens .item_curso1:hover .texto_curso,
+.cursos .cursos_itens .item_curso2:hover .texto_curso,
+.cursos .cursos_itens .item_curso3:hover .texto_curso {
+  color: white;
 }
 
 .cursos .cursos_itens .item_curso1 .num_curso,
@@ -446,5 +474,121 @@ footer {
   font-family: "Oxygen Mono";
   font-size: 1.8em;
   text-decoration: none;
+}
+
+.figuras {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.figuras #fig0 {
+  color: var(--verde_medio);
+  font-size: 30px;
+  left: 30%;
+  top: 8vh;
+  position: fixed;
+  z-index: -10;
+  -webkit-animation: efeito_mostra 2.5s forwards ease-in-out;
+          animation: efeito_mostra 2.5s forwards ease-in-out;
+}
+
+.figuras #fig1 {
+  color: #34f5c6;
+  font-size: 38px;
+  right: 22%;
+  top: 10vh;
+  position: absolute;
+  letter-spacing: 15px;
+  z-index: 10;
+  -webkit-animation: efeito_mostra 1s forwards ease-in-out;
+          animation: efeito_mostra 1s forwards ease-in-out;
+}
+
+.figuras #fig2 {
+  color: var(--corBackground2);
+  opacity: 0.6;
+  font-size: 25px;
+  right: 20%;
+  top: 42vh;
+  position: fixed;
+  z-index: -11;
+  -webkit-animation: efeito_mostra 2s forwards ease-in-out;
+          animation: efeito_mostra 2s forwards ease-in-out;
+}
+
+.figuras #fig3 {
+  color: #34f5c6;
+  font-size: 40px;
+  left: 20%;
+  top: 50vh;
+  position: absolute;
+  letter-spacing: 10px;
+  z-index: 11;
+  -webkit-animation: efeito_mostra 1s forwards ease-in-out;
+          animation: efeito_mostra 1s forwards ease-in-out;
+}
+
+.figuras #fig4 {
+  color: #1dcdfe;
+  font-family: "Oxygen Mono";
+  font-size: 25px;
+  position: absolute;
+  right: 24%;
+  top: 73vh;
+  z-index: 12;
+  letter-spacing: 12px;
+  -webkit-animation: efeito_mostra 1s forwards ease-in-out;
+          animation: efeito_mostra 1s forwards ease-in-out;
+}
+
+.figuras #fig5 {
+  color: var(--verde_medio);
+  font-size: 30px;
+  position: fixed;
+  left: 24%;
+  top: 85vh;
+  z-index: -12;
+  letter-spacing: 12px;
+  -webkit-animation: efeito_mostra 2.5s forwards ease-in-out;
+          animation: efeito_mostra 2.5s forwards ease-in-out;
+}
+
+.figuras #fig6 {
+  color: var(--corBackground2);
+  opacity: 0.6;
+  font-family: "Oxygen Mono";
+  font-size: 20px;
+  position: fixed;
+  left: 18%;
+  top: 44vh;
+  z-index: -13;
+  -webkit-animation: efeito_mostra 2s forwards ease-in-out;
+          animation: efeito_mostra 2s forwards ease-in-out;
+}
+
+.figuras #fig7 {
+  color: #1dcdfe;
+  font-family: "Oxygen Mono";
+  font-size: 20px;
+  position: absolute;
+  left: 26%;
+  top: 154vh;
+  z-index: 12;
+  -webkit-animation: efeito_mostra 1s forwards ease-in-out;
+          animation: efeito_mostra 1s forwards ease-in-out;
+}
+
+.figuras #fig8 {
+  color: #34f5c6;
+  font-size: 40px;
+  right: 25%;
+  top: 160vh;
+  position: absolute;
+  letter-spacing: 10px;
+  z-index: 11;
+  -webkit-animation: efeito_mostra 1s forwards ease-in-out;
+          animation: efeito_mostra 1s forwards ease-in-out;
 }
 /*# sourceMappingURL=home.css.map */

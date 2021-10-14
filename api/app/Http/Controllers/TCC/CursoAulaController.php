@@ -25,24 +25,25 @@ class CursoAulaController extends Controller
         $titulo = $request->CURAU_TITULO;
         $descricao = $request->CURAU_DESCRICAO;
         $qt_aula = $request->CURAU_QT_AULA;
+        $tempo = $request->CURAU_TEMPO;
 
         $fl_ativo = 'S';
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
 
-        $cd_ling = $request->cd_ling;
-        $cd_prof = $request->cd_prof;
         $cd_curso = $request->cd_curso;
+
+        $curau_video = $request->curau_video;
 
         $pdo->bindValue(':1', $titulo);
         $pdo->bindValue(':2', $descricao);
         $pdo->bindValue(':3', $qt_aula);
+        $pdo->bindValue(':4', $tempo);
 
-        $pdo->bindValue(':4', $fl_ativo);
-        $pdo->bindValue(':5', $dt_auditoria);
-        $pdo->bindValue(':6', $ds_auditoria);
-        $pdo->bindValue(':7', $cd_ling);
-        $pdo->bindValue(':8', $cd_prof);
+        $pdo->bindValue(':5', $fl_ativo);
+        $pdo->bindValue(':6', $dt_auditoria);
+        $pdo->bindValue(':7', $ds_auditoria);
+        $pdo->bindValue(':8', $curau_video);
         $pdo->bindValue(':9', $cd_curso);
 
         $pdo->execute();
@@ -62,38 +63,34 @@ class CursoAulaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $sql = "CALL PR_T_CURSO_AULA_UPDATE(:1, :2, :3, :4, :5, :6, :7, :8, :9, :10, :12)";
+        $sql = "CALL PR_T_CURSO_AULA_UPDATE(:id, :1, :2, :3, :4, :5, :6, :7, :8, :9, :10)";
 
         $pdo = DB::getPdo()->prepare($sql);
 
         $titulo = $request->CURAU_TITULO;
         $descricao = $request->CURAU_DESCRICAO;
         $qt_aula = $request->CURAU_QT_AULA;
+        $tempo = $request->CURAU_TEMPO;
 
         $fl_ativo = 'S';
         $dt_auditoria = date('Y-m-d H:i:s');
         $ds_auditoria = $request->dsAuditoria;
 
-        $cd_ling = $request->cd_ling;
-        $cd_prof = $request->cd_prof;
         $cd_curso = $request->cd_curso;
-        $curau_bl_video = base64_decode($request->curau_bl_video);
-        $curau_nm_video = $request->curau_nm_video;
 
+        $curau_video = $request->curau_video;
 
-        $pdo->bindValue(':1', $id);
-        $pdo->bindValue(':2', $titulo);
-        $pdo->bindValue(':3', $descricao);
-        $pdo->bindValue(':4', $qt_aula);
+        $pdo->bindValue(':id', $id);
+        $pdo->bindValue(':1', $titulo);
+        $pdo->bindValue(':2', $descricao);
+        $pdo->bindValue(':3', $qt_aula);
+        $pdo->bindValue(':4', $tempo);
 
         $pdo->bindValue(':5', $fl_ativo);
         $pdo->bindValue(':6', $dt_auditoria);
         $pdo->bindValue(':7', $ds_auditoria);
-        $pdo->bindValue(':8', $cd_ling);
-        $pdo->bindValue(':9', $cd_prof);
-        $pdo->bindValue(':10', $cd_curso);
-        $pdo->bindValue(':11', $curau_bl_video);
-        $pdo->bindValue(':12', $curau_nm_video);
+        $pdo->bindValue(':8', $curau_video);
+        $pdo->bindValue(':9', $cd_curso);
 
         $pdo->execute();
     }

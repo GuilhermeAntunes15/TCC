@@ -16,7 +16,7 @@ class CursoController extends Controller
     public function index()
     {
         try {
-            return view('pages.Cursos');
+            return view('pages.Curso_menu');
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
@@ -36,7 +36,25 @@ class CursoController extends Controller
     {
     }
 
-    public function show($id)
+    public function show()
+    {
+        try {
+            return view('pages.Cursos');
+        } catch (Exception $e) {
+            abort(500, $e->getMessage());
+        }
+    }
+
+    public function lista()
+    {
+        try {
+            return view('pages.Cursos');
+        } catch (Exception $e) {
+            abort(500, $e->getMessage());
+        }
+    }
+
+    public function aula()
     {
         try {
             return view('pages.Curso_aula');

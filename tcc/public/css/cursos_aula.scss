@@ -1,0 +1,93 @@
+@import "cursos";
+
+#curso {
+  text-align: center;
+
+  h2 {
+    text-align: left;
+  }
+}
+
+#video_curso {
+  background: black;
+  border-radius: 8px;
+  border: 1px solid var(--corComentario);
+  width: 85%;
+  margin: auto;
+  box-shadow: 15px 15px 0px var(--corNotif);
+
+  video {
+    display: block;
+    border-radius: inherit;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+#titulo_proximos_videos {
+  background-color: var(--verde_medio);
+  font-size: 30px;
+  padding: 3px 15px;
+  margin: 100px auto 70px;
+  display: inline-block;
+
+  animation: none;
+
+  &::after {
+    animation: none;
+  }
+}
+
+#proximos_videos_curso_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+
+  img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .proximos_videos_item {
+    margin: 0 2px 20px;
+    border-radius: 8px;
+
+    @include transicao(0.03s);
+
+    img {
+      border-radius: 5px; //5px 0 0;
+    }
+
+    figure {
+      font-size: 20px;
+      margin: -40px 0 10px;
+    }
+
+    figcaption {
+      position: relative;
+      top: -50%;
+      opacity: 0;
+      color: white;
+
+      @include transicao(0.06s);
+
+      i {
+        font-size: 45px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &:hover {
+      //background-color: var(--corBackground2);
+
+      img {
+        filter: brightness(0.7);
+      }
+
+      figcaption {
+        opacity: 1;
+      }
+    }
+  }
+}
