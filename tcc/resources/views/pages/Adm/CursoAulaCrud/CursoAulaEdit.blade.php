@@ -30,12 +30,9 @@
                 <input type="text" value="{{$curso->CURAU_DESCRICAO}}" class="form-control" name="descricao">
             </div>
 
-            <div class="form-group col-md-2">
+            <div class="form-group col-6">
                 <label for="">Video</label>
-                <input type="file" value="{{$curso->CURAU_BL_VIDEO}}" class="form-control" name="video">
-
-                <input type="hidden" value="{{$curso->CURAU_BL_VIDEO}}" name="foto">
-                <input type="hidden" value="{{$curso->CURAU_NM_VIDEO}}" name="nomeImg">
+                <input type="text" value="{{$curso->CURAU_VIDEO}}" class="form-control" name="video">
             </div>
 
             <div class="form-groupcol col-md-2">

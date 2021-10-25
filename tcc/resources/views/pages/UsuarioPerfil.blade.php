@@ -1,36 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt" class="black-mode">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="Estilo/principal.css" />
-        <link rel="stylesheet" href="Estilo/usuario_perfil.css" />
-        <link rel="stylesheet" href="Estilo/navbar.css" />
-        <link
-            rel="shortcut icon"
-            href="Imagens/Icones/icone_charlie.png"
-            type="image/x-icon"
-        />
-        <script
-            src="https://kit.fontawesome.com/04cbf46b06.js"
-            crossorigin="anonymous"
-        ></script>
+@extends('layouts.layoutPrincipal') 
+@section('content') 
+        <link rel="stylesheet" href="{{ asset('css/usuario_perfil.css') }}" />
+        
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-        <script src="JS/principal.js"></script>
-        <script src="JS/usuario_perfil.js"></script>
-        <title>Perfil do usuário</title>
-    </head>
-    <body>
+        <script src="{{ asset('js/principal.css') }}"></script>
+        <script src="{{ asset('js/usuario_perfil.css') }}"></script>
         <nav>
             <a href="{{route('index')}}" id="logo"
                 ><img
-                    src="Imagens/Icones/icone_charlie1-2.png"
+                    src="{{ asset('img/icone_charlie1-2.png')}}"
                     id="img1"
                     title="logo" />
                 <p>Charlie</p>
                 <img
-                    src="Imagens/Icones/icone_charlie2-2.png"
+                    src="{{ asset('img/icone_charlie2-2.png')}}"
                     id="img2"
                     title="logo"
             /></a>
@@ -46,7 +29,7 @@
                 ></i>
                 <a href="#" id="nav-link">Sobre nós</a>
                 <a href="{{route('cursos.index')}}" id="nav-link">Cursos</a>
-                <a href="inscrever.html" class="botao">Inscreva-se</a>
+                <a href="{{route('users.create')}}" class="botao">Inscreva-se</a>
             </section>
         </nav>
 
@@ -140,28 +123,31 @@
                         <form action="">
                             <input
                                 type="text"
+                                value="{{$nome}}"
                                 name="nome"
                                 placeholder="Nome completo"
                                 id="txtNome"
                             />
                             <input
                                 type="text"
-                                name="apelido"
-                                placeholder="Apelido"
-                                id="txtApelido"
+                                name="usuario"
+                                value="{{$usuario}}"
+                                placeholder="Usuario"
+                                id="txtUsuario"
                             />
                             <input
-                                type="text"
+                                type="email"
                                 name="email"
+                                value="{{$email}}"
                                 placeholder="E-mail"
                                 id="txtEmail"
                             />
-                            <input
+                            {{-- <input
                                 type="text"
                                 name="senha"
                                 placeholder="Senha"
                                 id="txtSenha"
-                            />
+                            /> --}}
                         </form>
                     </div>
 
@@ -239,7 +225,4 @@
 
             <button class="botao" id="usuario_btnSalvar">Salvar</button>
         </main>
-
-        <footer><p>Charlie@2021</p></footer>
-    </body>
-</html>
+@stop

@@ -57,13 +57,34 @@ class UsuarioController extends Controller
         }
     }
 
-    public function store(UsuarioRequest $request)
+    public function store(Request $request)
     {
+        $api = env("API_URL") . '/api/register';
+        $linguagem = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->post($api, [
+            'login' => $request->input('login'),
+            'nome' => $request->input('nome'),
+            'email' => $request->input('email'),
+            'senha' => $request->input('senha'),
+            'dt_nasc' => $request->input('dt_nasc'),
+            'ds_auditoria' => "Usuario criado"
+        ])->throw(function ($linguagem, $e) {
+            abort(500, $e->getMessage());
+        })->json();
 
+        return redirect()->route('users.index');
     }
 
     public function show($id)
     {
+        
+        try {
+            $nome = Auth::user()->US_NOME;
+            $email = Auth::user()->US_EMAIL;
+            $usuario = Auth::user()->US_LOGIN;
+            return view('pages.UsuarioPerfil', compact('nome', 'email', 'usuario'));
+        } catch (Exception $e) {
+            abort(500, $e->getMessage());
+        }
     }
 
 

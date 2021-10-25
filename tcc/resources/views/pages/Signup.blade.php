@@ -50,27 +50,27 @@
         </div>
       @endif
 
-      <form action="{{ route('usuarios.store') }}" method="POST">
+      <form action="{{ route('users.store') }}" method="POST">
         @csrf
         @method('POST')
         <input
           type="text"
-          name="txtNome"
+          name="nome"
           placeholder="Nome completo"
           id="txtNome"
         />
         <input
           type="text"
-          name="txtLogin"
+          name="login"
           placeholder="Login" 
           id="txtLogin"
         />
-        <input type="text" name="txtEmail" placeholder="E-mail" id="txtEmail" />
-        <input type="date" name="txtDataNasc" placeholder="E-mail" id="txtDataNasc" />
-        <input type="text" name="txtSenha" placeholder="Senha" id="txtSenha" />
-        <input type="text" name="senha_conf" placeholder="Confirme sua senha"
+        <input type="email" name="email" placeholder="E-mail" id="txtEmail" />
+        <input type="date" name="dt_nasc" placeholder="E-mail" id="txtDataNasc" />
+        <input type="password" name="senha" placeholder="Senha" id="txtSenha" />
+        <input type="password" name="senha_conf" placeholder="Confirme sua senha"
         id="txtSenhaConf">
-        <a href="login.html" id="aLogin">Já sou inscrito</a>
+        <a href="{{route("users.index")}}" id="aLogin">Já sou inscrito</a>
         <input type="submit" value="Continuar" class="botao" />
       </form>
     </main>

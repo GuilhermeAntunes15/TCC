@@ -27,9 +27,9 @@ Route::get('/', function () {
 })->name('index');
 
 
-Route::get('signup', [UsuarioController::class, 'create'])->name('signup.create');
-Route::get('signin', [UsuarioController::class, 'create'])->name('signin.signin');
+Route::post('users/login', [UsuarioController::class, 'login'])->name('users.login');
 
+Route::resource('users', UsuarioController::class);
 Route::resource('cursos', CursoController::class);
 Route::get('cursos/lista', [CursoController::class, 'lista'])->name('cursos.lista');
 Route::get('curso/aula', [CursoController::class, 'aula'])->name('cursos.aula');

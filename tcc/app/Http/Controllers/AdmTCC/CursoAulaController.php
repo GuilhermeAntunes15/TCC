@@ -57,7 +57,7 @@ class CursoAulaController extends Controller
             'CURAU_TEMPO' => $request->input('tempo'),
             'cd_curso' => $request->input('CD_CURSO'),
             'flAtivoSN' => 'S',
-            'curau_video' => $nomeImg,
+            'curau_video' => $request->input('video'),
             'dsAuditoria' => Auth::user()->NM_USUARIO . " - aulas cadastrado"
         ])->throw(function ($resposta, $e) {
              dd($e->getMessage());
@@ -127,7 +127,7 @@ class CursoAulaController extends Controller
             'CURAU_TEMPO' => $request->input('tempo'),
             'cd_curso' => $request->input('CD_CURSO'),
             'flAtivoSN' => 'S',
-            'curau_video' => $nomeImg,
+            'curau_video' => $request->input('video'),
             'dsAuditoria' => Auth::user()->NM_USUARIO . " - aulas atualizado"
         ])->throw(function ($resposta, $e) {
             abort(500, $e->getMessage());

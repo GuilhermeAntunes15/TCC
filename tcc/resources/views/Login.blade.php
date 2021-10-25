@@ -37,18 +37,18 @@
         <h1>Login</h1>
       </div>
 
-      <form action="{{route('professor.update')}}" method="post">
-        @method('put')
+      <form action="{{route('users.login')}}" method="post">
+        @method('post')
         @csrf
         <input
           type="text"
-          name="nome"
-          placeholder="E-mail ou apelido"
-          id="txtEmailApelido"
+          name="usuario"
+          placeholder="Usuario"
+          id="usuario"
         />
-        <input type="text" name="senha" placeholder="Senha" id="txtSenha" />
-        <a href="inscrever.html" id="aInscrever">Ainda não sou inscrito</a>
-        <a href="usuario_perfil.html"><input type="button" value="Continuar" class="botao" /></a>
+        <input type="password" name="senha" placeholder="Senha" id="txtSenha" />
+        <a href="{{route('users.create')}}" id="aInscrever">Ainda não sou inscrito</a>
+        <button type="submit" class="botao" id="btnEntrar">Entrar</button>
       </form>
     </div>
   </body>

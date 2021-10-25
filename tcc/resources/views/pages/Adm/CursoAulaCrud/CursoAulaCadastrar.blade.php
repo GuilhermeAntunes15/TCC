@@ -28,9 +28,9 @@
                 <input type="text" class="form-control" name="descricao">
             </div>
 
-            <div class="form-group col-md-2">
+            <div class="form-group col-6">
                 <label for="">Video</label>
-                <input type="file" class="form-control" name="video">
+                <input type="text" class="form-control" name="video">
             </div>
 
             <div class="form-groupcol col-md-2">
