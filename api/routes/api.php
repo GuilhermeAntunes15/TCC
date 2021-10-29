@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('loginMobile', [UsuarioController::class, 'loginMobile']);
 Route::post('login', [JwtAuthController::class, 'login']);
 Route::post('register', [UsuarioController::class, 'store']);
 

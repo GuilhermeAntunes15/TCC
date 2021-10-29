@@ -17,6 +17,29 @@ class UsuarioController extends Controller
         return Usuario::all();
     }
 
+    public function loginMobile(Request $request)
+    { 
+        $user = Usuario::where("US_LOGIN", $request->login)->get();
+        if(count($user) > 0){
+            if(Hash::check($request->senha, $user[0]->US_SENHA)){
+                $user[0]->US_SENHA = "";
+                return response()->json([
+                    'usuarioEncontrado' => true,
+                    'usuario' => $user[0]
+                ]);
+            }else{
+                return response()->json([
+                    'usuarioEncontrado' => false
+                ]);
+            }
+        }else{
+            return response()->json([
+                'usuarioEncontrado' => false
+            ]);
+        }
+
+    }
+
     public function store(Request $request)
     {
         $sql = "CALL PR_T_USUARIO_INSERT(@CD_USUARIO, :1, :2, :3, :4, :5, :6, :7, :8)";
