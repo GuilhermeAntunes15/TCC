@@ -178,7 +178,7 @@ a:visited, a:active {
   color: unset;
 }
 
-main {
+.main {
   text-align: center;
   overflow-x: hidden;
   -webkit-transition: 0.2s;
@@ -186,30 +186,30 @@ main {
 }
 
 @media screen and (max-width: 500px) {
-  main {
+  .main {
     margin: 9em 1vw;
   }
 }
 
 @media (max-width: 599px) {
-  main {
+  .main {
     margin: 9em 8vw;
   }
 }
 
 @media (min-width: 600px) {
-  main {
+  .main {
     margin: 10em 6vw;
   }
 }
 
 @media (min-width: 1200px) {
-  main {
+  .main {
     margin: 10em 15vw;
   }
 }
 
-main h1 {
+.main h1 {
   margin-top: 12vh;
 }
 
@@ -223,8 +223,6 @@ h3 {
   overflow: hidden;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  -webkit-animation: efeito_maquina 7.5s steps(70) normal;
-          animation: efeito_maquina 7.5s steps(70) normal;
 }
 
 h1::after,
@@ -303,6 +301,7 @@ h1 {
   width: fit-content;
   text-decoration: none;
   color: var(--corFonte);
+  background-color: var(--corBackground);
   -webkit-transition: 0.2s;
   transition: 0.2s;
   -webkit-transition: 0.25s;
@@ -492,6 +491,31 @@ footer p {
   letter-spacing: 2px;
 }
 
+input {
+  color: var(--corFonte);
+  border-width: 2px !important;
+}
+
+input::-webkit-input-placeholder {
+  color: var(--corFonte);
+  opacity: 0.5;
+}
+
+input:-ms-input-placeholder {
+  color: var(--corFonte);
+  opacity: 0.5;
+}
+
+input::-ms-input-placeholder {
+  color: var(--corFonte);
+  opacity: 0.5;
+}
+
+input::placeholder {
+  color: var(--corFonte);
+  opacity: 0.5;
+}
+
 #diretorios {
   display: block;
   text-align: left;
@@ -530,6 +554,32 @@ footer p {
 
 #diretorios #dir_atual:hover {
   color: unset;
+}
+
+@media (max-width: 599px) {
+  #diretorios {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  #diretorios {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 600px) {
+  #diretorios {
+    font-size: 21px;
+    margin-right: 6vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  #diretorios {
+    font-size: 23px;
+    margin-right: 15vw;
+  }
 }
 
 .tooltip {
@@ -600,11 +650,10 @@ input:focus {
 .notif_janela {
   content: "";
   background-color: var(--corNotif);
-  width: 300vw;
-  height: 300vh;
-  position: absolute;
-  top: -200vh;
-  left: -200vw;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
   z-index: 2000;
   display: none;
 }
@@ -795,5 +844,11 @@ input:focus {
   z-index: -11;
   -webkit-animation: efeito_mostra 1s forwards ease-in-out;
           animation: efeito_mostra 1s forwards ease-in-out;
+}
+
+@media (max-width: 700px) {
+  .figuras {
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=principal.css.map */

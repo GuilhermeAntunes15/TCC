@@ -49,7 +49,7 @@
     <p id="dir_atual"><a href="cursos.html">Nome do curso</a></p>
 </section>
 
-<main>
+<div class="main">
     <div id="curso">
         <h2 id="titulo_curso">
             <i class="fas fa-angle-right"></i>
@@ -156,5 +156,5 @@
             </a>
         </div>
     </div>
-</main>
+</div>
 @stop

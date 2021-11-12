@@ -132,10 +132,18 @@
   transition: 0.2s;
 }
 
-main {
+.main {
   margin-left: 0;
   margin-right: 0;
   margin-top: 35px;
+}
+
+form {
+  /*
+    h1 {
+        animation: efeito_maquina 7.5s steps(70) normal;
+    }
+    */
 }
 
 form a,
@@ -178,8 +186,6 @@ form #aInscrever {
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
-  -webkit-animation: efeito_maquina 10s steps(120) normal;
-          animation: efeito_maquina 10s steps(120) normal;
 }
 
 form #aLogin:hover,
@@ -195,11 +201,6 @@ form #aInscrever:hover {
   form #aInscrever {
     font-size: 0.75em;
   }
-}
-
-form h1 {
-  -webkit-animation: efeito_maquina 7.5s steps(70) normal;
-          animation: efeito_maquina 7.5s steps(70) normal;
 }
 
 form .botao {

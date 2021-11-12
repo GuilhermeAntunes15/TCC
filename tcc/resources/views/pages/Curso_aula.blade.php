@@ -47,7 +47,7 @@
       <p id="dir_atual"><a href="{{asset('cursos.aula')}}">1. Título da aula</a></p>
     </section>
 
-    <main>
+    <div class="main">
       <div id="curso">
         <h2 id="titulo_curso">
           <i class="fas fa-angle-right"></i>
@@ -101,5 +101,5 @@
           </div>
         </section>
       </div>
-    </main>
+    </div>
 @stop

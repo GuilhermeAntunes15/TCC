@@ -60,7 +60,7 @@
             <p id="fig7" class="figura">. . .</p>
         </figure>
 
-        <main>
+        <div  class="main">
             <div id="usuario_titulo">
                 <div id="usuario_imagem_div">
                     <img
@@ -224,5 +224,5 @@
             </div>
 
             <button class="botao" id="usuario_btnSalvar">Salvar</button>
-        </main>
+        </div>
 @stop

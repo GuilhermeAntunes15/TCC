@@ -10,7 +10,7 @@ main {
 
 #usuario_titulo {
   display: block;
-  margin: 3vh auto 5vh;
+  margin: 3vh auto 2vh;
 
   #usuario_imagem_div {
     display: inline-block;
@@ -66,13 +66,10 @@ main {
 
 #usuario_menu_menu {
   border: 1px solid var(--corLink);
-  float: left;
-  margin: 20px;
+  margin: 20px auto 5.5vh;
   border-radius: 8px;
   position: relative;
-  left: 60px;
-  padding: 30px 25px;
-  width: 220px;
+  padding: 18px 40px;
   text-align: left;
   font-size: 17px;
   box-shadow: 9px 9px 0px var(--corNotif);
@@ -89,7 +86,7 @@ main {
     cursor: pointer;
     margin-left: 20px;
     display: block;
-    padding: 0;
+    padding: 2px 0;
 
     i {
       @include grad_font;
@@ -100,13 +97,19 @@ main {
     }
 
     &:hover {
-      font-weight: bold;
+      //font-weight: bold;
+      border-bottom: 1px solid var(--corFonte);
+    }
+
+    @include tamanho(tablet) {
+      display: inline-block;
+      margin: 10px 17px;
     }
   }
 
   #usuario_informacoes_pessoais {
     i {
-      display: inline-block;
+      //display: inline-block;
     }
   }
 
@@ -120,20 +123,32 @@ main {
 
     &:hover {
       color: $verde;
+      border-bottom: none;
     }
 
     i {
       font-size: 20px;
-      display: inline-block;
+      //display: inline;
       padding-left: 20px;
     }
+
+    @include tamanho(tablet) {
+      display: inline-block;
+      margin: 10px 17px;
+    }
+  }
+
+  @include tamanho(tablet) {
+    width: fit-content;
+    float: middle;
+    left: 0;
   }
 }
 
 #usuario_menu_varia {
   display: inline-block;
-  max-width: 40vw;
-  margin-left: 50px;
+  max-width: 50vw;
+  //margin-left: 50px;
 
   #usuario_cursos_iniciados_div,
   #usuario_certificados_div {
@@ -148,16 +163,16 @@ form {
     margin-bottom: 6vh;
     font-size: 1.2em;
 
-    @include tamanho(celular) {
-      width: 70%;
+    @include tamanho(resp) {
+      width: 80%;
     }
 
     @include tamanho(tablet) {
-      width: 40vw;
+      width: 53vw;
     }
 
     @include tamanho(desktop) {
-      width: 33vw;
+      width: 35vw;
     }
   }
 }
@@ -165,11 +180,12 @@ form {
 #usuario_btnSalvar {
   padding: 10px 50px;
   font-size: 1.5em;
-  margin: 6vh auto 0;
+  margin: 0.5vh auto 0;
 }
 
 .usuario_ativo_p {
   font-weight: bold;
+  border-bottom: 1px solid var(--corFonte);
 }
 
 #usuario_cursos_iniciados_div {
@@ -247,7 +263,7 @@ form {
 
 #notif_usuario_sair {
   top: 35%;
-  left: calc(50% - 220px);
+  left: 34%;
   display: none;
 
   h3 {

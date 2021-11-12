@@ -35,7 +35,7 @@
       </section>
     </nav>
 
-    <main>
+    <div class="main">
       <div id="titulo">
         <h1>Inscrever-se</h1>
       </div>
@@ -73,7 +73,7 @@
         <a href="{{route("users.index")}}" id="aLogin">Já sou inscrito</a>
         <input type="submit" value="Continuar" class="botao" />
       </form>
-    </main>
+    </div>
   </body>
 </html>
 

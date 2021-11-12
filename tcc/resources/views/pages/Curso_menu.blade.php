@@ -48,7 +48,7 @@
     <p id="dir_atual"><a href="{{route('cursos.index')}}">Todos os cursos</a></p>
 </section>
 
-<main>
+<div class="main">
     <div id="curso">
         <h2 id="titulo_cursos_menu">Todos os cursos</h2>
     </div>
@@ -69,5 +69,5 @@
             <div class="texto_curso"><p>Nome do curso</p></div>
         </a>
     </div>
-</main>
+</div>
 @stop

@@ -32,7 +32,7 @@
       </section>
     </nav>
 
-    <main>
+    <div class="main">
       <div id="titulo">
         <h1>Login</h1>
       </div>
@@ -48,7 +48,7 @@
         />
         <input type="password" name="senha" placeholder="Senha" id="txtSenha" />
         <a href="{{route('users.create')}}" id="aInscrever">Ainda não sou inscrito</a>
-        <button type="submit" class="botao" id="btnEntrar">Entrar</button>
+        <input type="submit" value="Entrar" class="botao" />
       </form>
     </div>
   </body>
