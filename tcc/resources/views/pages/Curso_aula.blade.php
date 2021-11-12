@@ -24,7 +24,11 @@
         <a href="cursos.html" id="nav-link" style="text-decoration: underline"
           >Cursos</a
         >
-        <a href="inscrever.html" class="botao">Inscreva-se</a>
+        @if(Auth::check())
+          <a href="{{route('users.show', Auth::user()->CD_USUARIO)}}" id="nav-link">Perfil</a>
+        @else
+          <a href="inscrever.html" class="botao">Inscreva-se</a>
+        @endif
       </section>
     </nav>
 

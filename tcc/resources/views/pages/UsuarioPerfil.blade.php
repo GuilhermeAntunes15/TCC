@@ -29,7 +29,11 @@
                 ></i>
                 <a href="#" id="nav-link">Sobre nós</a>
                 <a href="{{route('cursos.index')}}" id="nav-link">Cursos</a>
-                <a href="{{route('users.create')}}" class="botao">Inscreva-se</a>
+                @if(Auth::check())
+                    <a href="{{route('users.show', Auth::user()->CD_USUARIO)}}" id="nav-link">Perfil</a>
+                @else
+                    <a href="inscrever.html" class="botao">Inscreva-se</a>
+                @endif
             </section>
         </nav>
 
@@ -38,7 +42,7 @@
                 <figure class="notif_icone">{!}</figure>
                 <h3 class="notif_titulo">Tem certeza que deseja sair?</h3>
                 <div class="notif_div_botoes">
-                    <button class="notif_botao_sim">Sim</button>
+                    <a href="{{route('users.sair')}}"><button class="notif_botao_sim">Sim</button></a>
                     <button
                         class="notif_botao_nao"
                         onclick="notifFecha('notif_sair', 'notif_janela_sair')"

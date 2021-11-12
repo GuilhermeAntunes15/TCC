@@ -30,15 +30,18 @@ Route::get('/', function () {
 Route::post('users/login', [UsuarioController::class, 'login'])->name('users.login');
 
 Route::resource('users', UsuarioController::class);
+Route::get('sair', [UsuarioController::class, 'sair'])->name('users.sair');
+
 Route::resource('cursos', CursoController::class);
 Route::get('cursos/lista', [CursoController::class, 'lista'])->name('cursos.lista');
 Route::get('curso/aula', [CursoController::class, 'aula'])->name('cursos.aula');
+Route::resource('home', HomeController::class);
+
 
 
 Route::middleware(['auth', 'auth.prof'])->group(function () {
     Route::resource('professor', ProfessorController::class);
     Route::resource('usuarios', UsuarioController::class);
-    Route::resource('home', HomeController::class);
     Route::resource('curso', CursoController::class);
     Route::get('dash', [AdminController::class, 'dash'])->name('admin.dash');
 

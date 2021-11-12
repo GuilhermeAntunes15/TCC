@@ -40,7 +40,7 @@ class UsuarioController extends Controller
                 'password' => $request->senha
             ];
             if (Auth::attempt($credentials)) {
-                return redirect()->route("home.index");
+                return redirect()->route("index");
             }
         } else {
             abort(500, $login->error);
@@ -101,5 +101,11 @@ class UsuarioController extends Controller
 
     public function destroy($id)
     {
+    }
+
+    public function sair()
+    {
+        Auth::logout();
+        return redirect()->route('index');
     }
 }
