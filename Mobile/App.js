@@ -7,8 +7,6 @@ import Signup from "./components/SignupPage";
 
 const Stack = createNativeStackNavigator();
 
-// Guilherme Antunes e Lucas Albuquerque
-
 export default class App extends React.Component {
     render() {
         return (

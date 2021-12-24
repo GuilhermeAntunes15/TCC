@@ -14,7 +14,7 @@ const Signup = ({ navigation }) => {
     const [Password, setPassword] = useState("");
     const [Usuario, setUsuario] = useState("");
     const [DataNasc, setDataNasc] = useState(null);
-    const [Nome, setNome] = useState(""); // sss
+    const [Nome, setNome] = useState("");
 
     const changeEmail = ({ target }) => {
         setEmail(target.value);
@@ -38,12 +38,16 @@ const Signup = ({ navigation }) => {
     };
 
     const signupAction = async () => {
+        // formatar data
+        let data = DataNasc.split("/");
+        let dataFormatada = `${data[2]}-${data[1]}-${data[0]}`;
+
         const response = await createUser({
             login: Usuario,
             nome: Nome,
             email: Email,
             senha: Password,
-            dt_nasc: DataNasc,
+            dt_nasc: dataFormatada,
             dsAuditoria: "Usuario criado pelo app",
         });
 
@@ -148,7 +152,7 @@ const Signup = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#002A45",
+        backgroundColor: "#141442",
         alignItems: "center",
         justifyContent: "center",
         height: "100%",
@@ -156,7 +160,7 @@ const styles = StyleSheet.create({
     logo: {
         fontWeight: "bold",
         fontSize: 50,
-        color: "#FF5F5F",
+        color: "white",
         marginBottom: 30,
     },
     inputView: {
@@ -178,7 +182,7 @@ const styles = StyleSheet.create({
     },
     signupBtn: {
         width: "80%",
-        backgroundColor: "#970000",
+        backgroundColor: "#1dcdfe",
         borderRadius: 25,
         height: 50,
         alignItems: "center",

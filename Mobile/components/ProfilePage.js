@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { StyleSheet, View, Text, Image } from "react-native";
 
-import logoImg from "../assets/logo.png";
+import logoImg from "../assets/profile-user.png";
 import logoCharlie from "../assets/logoCharlie.png";
 import curso from "../assets/img1.jpg";
+import logoMenu from "../assets/menu.png";
 
 const ProfilePage = ({ navigation, route }) => {
     return (
         <View style={styles.container}>
+            <View style={styles.menu}>
+                <Image source={logoMenu} style={styles.imageMenu} />
+            </View>
             <View style={styles.user}>
                 <Image source={logoImg} style={styles.image} />
                 <Text style={styles.text}>{route.params.email}</Text>
@@ -39,18 +43,19 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         display: "flex",
-        backgroundColor: "#002A45",
+        backgroundColor: "#141442",
     },
     logoCharlie: {
         justifyContent: "center",
         alignItems: "center",
+        marginTop: "10%",
     },
     footer: {
         paddingTop: 20,
         borderTopWidth: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#002A45",
+        backgroundColor: "#141442",
     },
     cursos: {
         display: "flex",
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
         position: "relative",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#002A45",
+        backgroundColor: "#141442",
     },
     cursosPb: {
         display: "flex",
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         paddingBottom: 30,
-        backgroundColor: "#002A45",
+        backgroundColor: "#141442",
     },
     user: {
         marginLeft: "auto",
@@ -77,19 +82,33 @@ const styles = StyleSheet.create({
         marginTop: "10px",
         marginRight: "10px",
     },
+    menu: {
+        marginRight: "auto",
+        position: "absolute",
+        top: 0,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "10px",
+        marginRight: "10px",
+    },
     image: {
-        width: 80,
-        height: 80,
+        width: 40,
+        height: 40,
+    },
+    imageMenu: {
+        width: 40,
+        height: 40,
+        marginLeft: 5,
     },
     logo: {
-        width: 500,
-        height: 70,
+        width: 300,
+        height: 60,
     },
     text: {
         color: "white",
         fontWeight: "bold",
         backgroundColor: "transparent",
-        marginTop: 20,
+        marginTop: 10,
     },
 
     cursoText: {
@@ -100,7 +119,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     cursoImage: {
-        width: 500,
+        width: 430,
         height: 250,
     },
 });

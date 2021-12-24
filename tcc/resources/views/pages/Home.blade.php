@@ -26,7 +26,7 @@
         @if(Auth::check())
             <a href="{{route('users.show', Auth::user()->CD_USUARIO)}}" id="nav-link">Perfil</a>
         @else
-            <a href="inscrever.html" class="botao">Inscreva-se</a>
+            <a href="{{route('users.create')}}" class="botao">Inscreva-se</a>
         @endif
     </section>
 </nav>
@@ -94,6 +94,6 @@
 
 <div class="final">
     <div class="titulo"><h1>Se interessou? É de graça. Clica aí!</h1></div>
-    <a href="inscrever.html"><button class="botao">Inscrever-se :)</button></a>
+    <a href="{{route('users.create')}}"><button class="botao">Inscrever-se :)</button></a>
 </div>
 @stop

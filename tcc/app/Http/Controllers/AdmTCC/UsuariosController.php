@@ -17,7 +17,11 @@ class UsuariosController extends Controller
     public function index()
     {
         try {
-            return view('pages.Adm.Usuarios');
+            $usuarios = Http::withHeaders(['Authorization' => 'Bearer ' . session()->get('token')])->get(env("API_URL") . '/api/usuarios');
+            $usuarios = json_decode($usuarios->body());
+            return view('pages.Adm.Usuarios', [
+                    'usuarios' => $usuarios
+                ]);
         } catch (Exception $e) {
             abort(500, $e->getMessage());
         }

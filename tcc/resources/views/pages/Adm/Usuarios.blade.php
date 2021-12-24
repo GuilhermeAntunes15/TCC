@@ -12,15 +12,14 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($curva as $data)
+                @foreach($usuarios as $usuario)
                 <tr>
-                    <th scope="row">{{ $data->ID_CURVA }}</th>
-                    <td>{{ $data->PRODUTO_CURVA }}</td>
-                    <td>{{ $data->CLIENTE_CURVA }}</td>
-                    <td>{{ $data->ESTADO_CURVA }}</td>
-                    <td>{{ $data->VENDEDOR_CURVA }}</td>
+                    <th scope="row">{{ $usuario->CD_USUARIO }}</th>
+                    <td>{{ $usuario->US_NOME }}</td>
+                    <td>{{ $usuario->US_EMAIL }}</td>
+                    <td>{{ $usuario->US_DT_NASCIMENTO }}</td>
                 </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>

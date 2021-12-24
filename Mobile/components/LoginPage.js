@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import {
     StyleSheet,
     Text,
+    Image,
     View,
     TextInput,
     TouchableOpacity,
 } from "react-native";
 import { loginUser } from "../helpers/users";
+import logoCharlie from "../assets/logoCharlie.png";
 
 const Login = ({ navigation }) => {
     const [Login, setLogin] = useState("");
@@ -44,7 +46,9 @@ const Login = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.logo}>Charlie</Text>
+            <View style={styles.logoCharlie}>
+                <Image source={logoCharlie} style={styles.logo} />
+            </View>
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.inputText}
@@ -80,14 +84,14 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#002A45",
+        backgroundColor: "#141442",
         alignItems: "center",
         justifyContent: "center",
     },
     logo: {
         fontWeight: "bold",
         fontSize: 50,
-        color: "#FF5F5F",
+        color: "white",
         marginBottom: 40,
     },
     inputView: {
@@ -109,7 +113,7 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: "80%",
-        backgroundColor: "#970000",
+        backgroundColor: "#1dcdfe",
         borderRadius: 25,
         height: 50,
         alignItems: "center",
@@ -119,6 +123,15 @@ const styles = StyleSheet.create({
     },
     loginText: {
         color: "white",
+    },
+    logoCharlie: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 20,
+    },
+    logo: {
+        width: 300,
+        height: 60,
     },
 });
 
